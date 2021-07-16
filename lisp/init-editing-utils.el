@@ -325,8 +325,11 @@ ORIG is the advised function, which is called with its ARGS."
 
 (advice-add 'kmacro-call-macro :around 'gilbert/disable-features-during-macro-call)
 
+
 
 (require 'color-rg)
+(global-set-key (kbd "M-s p") 'color-rg-search-project)
+(global-set-key (kbd "M-s d") 'color-rg-search-input)
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here

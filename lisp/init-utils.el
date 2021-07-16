@@ -348,7 +348,7 @@ If a buffer is not file and not dired, copy value of `default-directory' (which 
   (while (search-forward ";" nil t) (replace-match "")))
 
 (defun gilbert/add-hook (hooks funcs &optional append local)
-  "More general definition of function add-hook."
+  "More general definition of function `add-hook'."
   (unless (listp hooks)
     (setq hooks (list hooks)))
   (unless (listp funcs)

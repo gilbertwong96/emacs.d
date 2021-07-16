@@ -24,9 +24,8 @@
      (string= "#!" (buffer-substring (point-min) (+ 2 (point-min)))))
    (normal-mode)))
 
-(when (maybe-require-package 'youdao-dictionary)
-  (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point+)
-  )
+(require-package 'youdao-dictionary)
+(global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point+)
 
 
 (when (maybe-require-package 'info-colors)

@@ -87,6 +87,7 @@
 (require 'init-nxml)
 (require 'init-html)
 (require 'init-css)
+(require 'init-c++)
 (require 'init-http)
 (require 'init-python)
 (require 'init-haskell)
