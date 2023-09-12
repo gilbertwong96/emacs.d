@@ -1,3 +1,15 @@
-straight/
+straight/build*
+straight/repos/
+straight/build-cache.el
+elpa/
+eshell/
 tutorial/
+projects
+history
+.cache/
+tree-sitter/
+transient/
+recentf
+projectile-bookmarks*
+eln-cache/
 *~
