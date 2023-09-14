@@ -17,12 +17,15 @@
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
+  :custom
+  (copilot-idle-delay 1 "Set Copilot-idle-delay to 1s")
   :hook
   (prog-mode . copilot-mode)
   :config
-  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-j") 'copilot-accept-completion)
+  (setq copilot-max-char 1000000)
   )
+
 
 ;; Patch for emacs lisp
 (use-package el-patch :straight t :defer t)
@@ -42,6 +45,7 @@
 (use-package init-git)
 (use-package init-markdown)
 (use-package init-treesitter)
+(use-package init-rust)
 
 (use-package doom-modeline
   :straight t
