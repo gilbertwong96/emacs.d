@@ -15,7 +15,6 @@
   :defer t
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
-  :config
   )
 
 (provide 'init-lsp)

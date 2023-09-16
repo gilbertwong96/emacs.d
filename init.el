@@ -17,6 +17,7 @@
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
+  :defer t
   :custom
   (copilot-idle-delay 1 "Set Copilot-idle-delay to 1s")
   :hook
@@ -26,30 +27,30 @@
   (setq copilot-max-char 1000000)
   )
 
+(use-package dockerfile-mode
+  :straight t
+  :defer t
+  )
 
 ;; Patch for emacs lisp
 (use-package el-patch :straight t :defer t)
 
+;; Init theme before the GUI initialized
+(use-package init-theme)
 (use-package init-settings)
-(use-package init-evil)
 (use-package init-keybindings)
 (use-package init-treemacs)
 (use-package init-autocomplete)
 (use-package init-vertico)
 (use-package init-just)
 (use-package init-lsp)
+(use-package init-evil)
+;; (use-package init-assistent)
+
 (use-package init-config)
 (use-package init-elisp)
 (use-package init-shell)
 (use-package init-erlang)
 (use-package init-git)
 (use-package init-markdown)
-(use-package init-treesitter)
 (use-package init-rust)
-
-(use-package doom-modeline
-  :straight t
-  :ensure t
-  :config
-  (doom-modeline-mode 1)
-  (setq inhibit-compacting-font-caches t))

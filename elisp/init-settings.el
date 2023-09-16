@@ -28,11 +28,14 @@
 ;; Disable making backup files
 (setq make-backup-files nil)
 
+;; Enable column mode
+(column-number-mode t)
+
 ;; If the value is greater than 100, redisplay will never recenter point, but will always
 ;; scroll just enough text to bring point into view, even if you move far away. A value of
 ;; zero means always recenter point if it moves off screen."
-(setq scroll-conservatively 101)
-(setq scroll-margin 10)
+;; (setq scroll-conservatively 101)
+;; (setq scroll-margin 10)
 
 ;; Set transparency
 (defun set-transparency (val)
@@ -65,10 +68,12 @@
       ;; you may want to add different for other charset in this way.
       )
 
-
-;; Set titlebar theme
-(set-frame-parameter nil 'ns-appearance 'dark)
-(set-frame-parameter nil 'ns-transparent-titlebar nil)
+(use-package doom-modeline
+  :straight t
+  :ensure t
+  :config
+  (doom-modeline-mode 1)
+  (setq inhibit-compacting-font-caches t))
 
 ;; Set encoding to utf8
 (set-language-environment "UTF-8")
@@ -115,5 +120,14 @@
 
 (customize-set-variable 'tramp-save-ad-hoc-proxies t)
 
+
+(use-package good-scroll
+  :straight t
+  :ensure t
+  :config
+  (good-scroll-mode 1)
+  )
+
+;; Better smooth
 (provide 'init-settings)
 ;;; init-settings.el ends here

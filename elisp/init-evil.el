@@ -8,24 +8,24 @@
 
 (use-package evil
   :straight t
-  :demand t
   :init
+  (setq-default evil-disable-insert-state-bindings t)
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
   :hook
   (after-init . evil-mode)
-  :config
-  (define-key evil-normal-state-map (kbd "C-h") #'evil-window-left)
-  (define-key evil-normal-state-map (kbd "C-j") #'evil-window-down)
-  (define-key evil-normal-state-map (kbd "C-k") #'evil-window-up)
-  (define-key evil-normal-state-map (kbd "C-l") #'evil-window-right))
+  :bind
+  ("C-h" . evil-window-left)
+  ("C-j" . evil-window-down)
+  ("C-k" . evil-window-up)
+  ("C-l" . evil-window-right)
+  )
 
   ;; set leader key in normal state
   ;; (evil-set-leader 'normal (kbd "SPC"))
 
   ;; set local leader key in normal state
   ;; (evil-set-leader 'normal "," t)
-
 
 (use-package evil-collection
   :straight t
@@ -36,7 +36,6 @@
 
 (use-package evil-escape
   :straight t
-  :demand t
   :after evil
   :config
   (evil-escape-mode t)
@@ -44,11 +43,14 @@
   (setq-default evil-escape-key-sequence "jk")
   (setq-default evil-escape-delay 0.08))
 
-(use-package accelerate
-  :straight t
-  :config
-  (accelerate evil-previous-line 2)
-  )
+;; (use-package accelerate
+;;   :straight t
+;;   :config
+;;   (accelerate previous-line 2)
+;;   (accelerate next-line 2)
+;;   (accelerate forward-char 2)
+;;   (accelerate backward-char 2)
+;;   )
 
 (provide 'init-evil)
 ;;; init-evil.el ends here

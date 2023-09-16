@@ -9,12 +9,10 @@
 (use-package just-mode
   :straight t
   :defer t
-  :demand t
   )
 
 (use-package justl
   :straight t
-  :ensure t
   :defer t)
 
 (provide 'init-just)

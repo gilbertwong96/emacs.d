@@ -15,6 +15,7 @@
   :defer t
   ;; Optional customizations
   :custom
+  (corfu-auto-delay 0.2)           ;; Slow down the delay interval
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
   (corfu-separator ?\s)          ;; Orderless field separator

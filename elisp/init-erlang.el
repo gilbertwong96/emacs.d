@@ -8,8 +8,8 @@
 
 (use-package erlang
   :straight t
+  :ensure t
   :defer t
-  :demand t
   :hook
   (erlang-mode . eglot-ensure)
   )

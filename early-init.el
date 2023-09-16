@@ -35,9 +35,6 @@
 ;; Intergate use-package
 (straight-use-package 'use-package)
 
-
 ;; Place user settings to elisp dir
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
-;; Init theme before the GUI initialized
-(use-package init-theme)

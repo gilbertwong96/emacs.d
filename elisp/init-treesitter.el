@@ -10,7 +10,7 @@
   :straight t
   :ensure t
   :config
-  (setq treesit-auto-install 'markdown)
+  (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))
 
 (provide 'init-treesitter)

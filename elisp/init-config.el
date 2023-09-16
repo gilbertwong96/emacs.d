@@ -8,7 +8,7 @@
 
 (use-package yaml-mode
   :straight t
-  :ensure t
+  :defer t
   :hook
   (yaml-mode . eglot-ensure)
   :config
