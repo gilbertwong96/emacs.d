@@ -152,7 +152,7 @@
     "cL" 'consult-line-multi
     "pb" 'consult-project-buffer
     "gg" 'consult-git-grep
-    "rg" 'consult-ripgrep
+    "/" 'consult-ripgrep
     "mi" 'consult-imenu
     "mI" 'consult-imenu-multi
     )
