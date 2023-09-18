@@ -10,8 +10,10 @@
   :straight t
   :defer t
   :commands flymake-shellcheck-load
-  :init
-  (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
+  :hook
+  (sh-mode . eglot-ensure)
+  (sh-mode . flymake-shellcheck-load)
+  (bash-ts-mode . flymake-shellcheck-load))
 
 (use-package fish-mode
   :straight t

@@ -238,4 +238,9 @@
   ;; (setq consult-project-function nil)
 )
 
+
+(use-package consult-todo
+  :straight (:host github :repo "liuyinz/consult-todo" :files ("*.el"))
+  :ensure t)
+
 (provide 'init-vertico)

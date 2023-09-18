@@ -34,6 +34,9 @@
   (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom)
   )
 
+(use-package magit-todos
+  :straight t
+  :ensure t)
 
 (provide 'init-git)
 ;;; init-git.el ends here
