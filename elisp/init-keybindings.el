@@ -38,7 +38,8 @@
     "bk"  'kill-buffer
     "qr"  'restart-emacs
     "qq"  'save-buffers-kill-emacs
-    "wm"  'delete-other-windows
+    "wm"  'maximize-window
+    "w="  'balance-windows
     "rf"  'recentf
     "wd"  'delete-window
     "hv"  'describe-variable
@@ -46,7 +47,7 @@
     "pf"  'project-find-file
     "pp"  'project-switch-project
     "me"  'manual-entry
-    "mi"  'info-display-manual
+    "mm"  'info-display-manual
     )
  )
 

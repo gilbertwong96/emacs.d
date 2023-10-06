@@ -241,6 +241,7 @@
 
 (use-package consult-todo
   :straight (:host github :repo "liuyinz/consult-todo" :files ("*.el"))
+  :defer t
   :ensure t)
 
 (provide 'init-vertico)

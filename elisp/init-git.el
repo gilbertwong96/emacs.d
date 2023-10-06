@@ -36,6 +36,7 @@
 
 (use-package magit-todos
   :straight t
+  :defer t
   :ensure t)
 
 (provide 'init-git)

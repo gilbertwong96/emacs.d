@@ -15,7 +15,7 @@
   :hook
   (prog-mode . copilot-mode)
   :config
-  (define-key copilot-completion-map (kbd "C-j") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "M-j") 'copilot-accept-completion)
   (setq copilot-max-char 1000000)
   )
 

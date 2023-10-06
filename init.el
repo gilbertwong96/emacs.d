@@ -19,6 +19,11 @@
 ;; Patch for emacs lisp
 (use-package el-patch :straight t :defer t)
 
+(use-package protobuf-mode
+  :straight t
+  :defer t
+  :ensure t)
+
 ;; Init theme before the GUI initialized
 (use-package init-theme)
 (use-package init-settings)
@@ -36,6 +41,7 @@
 (use-package init-elisp)
 (use-package init-shell)
 (use-package init-erlang)
+(use-package init-golang)
 (use-package init-git)
 (use-package init-markdown)
 (use-package init-rust)
