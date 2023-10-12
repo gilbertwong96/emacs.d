@@ -34,8 +34,8 @@
 ;; If the value is greater than 100, redisplay will never recenter point, but will always
 ;; scroll just enough text to bring point into view, even if you move far away. A value of
 ;; zero means always recenter point if it moves off screen."
-;; (setq scroll-conservatively 101)
-;; (setq scroll-margin 10)
+(setq scroll-conservatively 101)
+(setq scroll-margin 15)
 
 ;; Set transparency
 (defun set-transparency (val)
@@ -120,14 +120,6 @@
 
 (customize-set-variable 'tramp-save-ad-hoc-proxies t)
 
-
-(use-package good-scroll
-  :straight t
-  :ensure t
-  :config
-  (good-scroll-mode 1)
-  )
-
 (use-package hl-todo
   :straight t
   :ensure t
@@ -137,10 +129,12 @@
   (setq hl-todo-keyword-faces
       '(("TODO"   . "#FF0000")
         ("FIXME"  . "#FF0000")
+        ("NOTE"   . "#FFFFFF")
         ("DEBUG"  . "#A020F0")
         ("GOTCHA" . "#FF4500")
         ("STUB"   . "#1E90FF")))
   )
+
 
 ;; Better smooth
 (provide 'init-settings)

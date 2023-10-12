@@ -8,6 +8,7 @@
 
 (use-package erlang
   :straight t
+  :demand t
   :ensure t
   :defer t
   :hook

@@ -13,7 +13,9 @@
   :init
   (leader-def
     :keymaps 'normal
-    "gs" 'magit-status))
+    "gs" 'magit-status
+    "gb" 'magit-blame-addition
+    ))
 
 (use-package git-gutter
   :straight t
