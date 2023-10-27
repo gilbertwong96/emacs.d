@@ -15,6 +15,14 @@
   :defer t
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+  (local-leader-def
+    :keymaps 'normal
+    "lr" 'eglot-rename
+    )
+  (leader-def
+    :keymaps 'normal
+    "lr" 'eglot-reconnect
+    )
   )
 
 (provide 'init-lsp)
