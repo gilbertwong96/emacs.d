@@ -34,8 +34,8 @@
 ;; If the value is greater than 100, redisplay will never recenter point, but will always
 ;; scroll just enough text to bring point into view, even if you move far away. A value of
 ;; zero means always recenter point if it moves off screen."
-(setq scroll-conservatively 101)
-(setq scroll-margin 15)
+;; (setq scroll-conservatively 101)
+;; (setq scroll-margin 15)
 
 ;; Set transparency
 (defun set-transparency (val)
