@@ -14,18 +14,14 @@
   (setq evil-want-keybinding nil)
   :hook
   (after-init . evil-mode)
+  :config
   :bind
-  ("C-h" . evil-window-left)
-  ("C-j" . evil-window-down)
-  ("C-k" . evil-window-up)
-  ("C-l" . evil-window-right)
+  (:map evil-motion-state-map
+        ("s-h" . evil-window-left)
+        ("s-j" . evil-window-down)
+        ("s-k" . evil-window-up)
+        ("s-l" . evil-window-right))
   )
-
-  ;; set leader key in normal state
-  ;; (evil-set-leader 'normal (kbd "SPC"))
-
-  ;; set local leader key in normal state
-  ;; (evil-set-leader 'normal "," t)
 
 (use-package evil-collection
   :straight t

@@ -94,10 +94,6 @@
     (treemacs-hide-gitignored-files-mode nil)
 
     )
-
-   :bind
-   (:map global-map
-      ("C-l"       . treemacs-select-window))
      ;;       ("C-x t t"   . treemacs)
      ;;       ("C-x t d"   . treemacs-select-directory)
      ;;       ("C-x t B"   . treemacs-bookmark)
