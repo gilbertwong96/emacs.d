@@ -8,8 +8,9 @@
 
 (use-package erlang
   :straight t
+  :mode ("rebar\\.\\(config\\|lock\\)" . erlang-mode)
   :demand t
-  :ensure t
+  :ensure
   :defer t
   :hook
   (erlang-mode . eglot-ensure)
