@@ -16,11 +16,11 @@
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (local-leader-def
-    :keymaps 'normal
+    :keymaps 'eglot-mode-map
     "lr" 'eglot-rename
     )
   (leader-def
-    :keymaps 'normal
+    :keymaps 'eglot-mode-map
     "lr" 'eglot-reconnect
     )
   )

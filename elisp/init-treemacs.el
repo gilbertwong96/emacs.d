@@ -12,17 +12,11 @@
   :defer t
   :init
   (leader-def
-      :keymaps 'normal
-      "tt" 'treemacs
-      "td" 'treemacs-select-directory
-      "ts" 'treemacs-switch-workspace
-      "te" 'treemacs-edit-workspaces
-      "tc" 'treemacs-create-workspace)
-  (local-leader-def
-      :keymaps 'normal
-      "tf" 'treemacs-find-file
-      "tt" 'treemacs-find-tag
-      )
+    "tt" 'treemacs
+    "td" 'treemacs-select-directory
+    "ts" 'treemacs-switch-workspace
+    "te" 'treemacs-edit-workspaces
+    "tc" 'treemacs-create-workspace)
   :config
   (progn
     (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
@@ -113,21 +107,25 @@
 
 (use-package treemacs-evil
   :straight t
+  :defer t
   :after (treemacs evil)
   :ensure t)
 
 (use-package treemacs-projectile
   :straight t
+  :defer t
   :after (treemacs projectile)
- :ensure t)
+  :ensure t)
 
 (use-package treemacs-icons-dired
   :straight t
+  :defer t
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
 
 (use-package treemacs-magit
   :straight t
+  :defer t
   :after (treemacs magit)
   :ensure t)
 

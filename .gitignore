@@ -12,5 +12,8 @@ transient/
 recentf
 projectile-bookmarks*
 eln-cache/
+.org-id-locations
 tramp
+bookmarks
+org-roam.db
 *~

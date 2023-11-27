@@ -143,7 +143,6 @@
   ;; The :init configuration is always executed (Not lazy)
   :init
   (leader-def
-    :keymaps 'normal
     "cm" 'consult-mode-command
     "ck" 'consult-kmacro
     "cy" 'consult-yank-pop
@@ -157,7 +156,6 @@
     "mI" 'consult-imenu-multi
     )
   (local-leader-def
-    :keymaps 'normal
     "ce" 'consult-compile-error
     "cf" 'consult-flymake
     "cg" 'consult-goto-line

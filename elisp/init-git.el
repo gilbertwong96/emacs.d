@@ -12,9 +12,9 @@
   :defer t
   :init
   (leader-def
-    :keymaps 'normal
     "gs" 'magit-status
     "gb" 'magit-blame-addition
+    "gc" 'magit-clone
     ))
 
 (use-package git-gutter

@@ -20,17 +20,26 @@
   :ensure t
   :config
   (general-auto-unbind-keys)
-  (defconst leader "SPC")
-  (defconst local-leader ",")
+  (defconst evil-leader "SPC")
+  (defconst emacs-leader "C-c")
+  (defconst evil-local-leader ",")
+  (defconst emacs-local-leader "C-c l")
   (general-create-definer leader-def
-    ;; :prefix my-leader
-    :prefix leader)
+    :states '(normal insert emacs)
+    :prefix evil-leader
+    :non-normal-prefix emacs-leader
+    :prefix-command 'leader-prefix-command
+    :prefix-map 'leader-prefix-map
+    )
   (general-create-definer local-leader-def
-  ;; :prefix my-local-leader
-    :prefix local-leader)
+    :states '(normal insert emacs)
+    :prefix evil-local-leader
+    :non-normal-prefix emacs-local-leader
+    :prefix-command 'local-leader-prefix-command
+    :prefix-map 'local-leader-prefix-map
+    )
 
   (leader-def
-    :keymaps 'normal
     "SPC" 'execute-extended-command
     "ff"  'find-file
     "fs"  'save-buffer
@@ -42,20 +51,18 @@
     "w="  'balance-windows
     "rf"  'recentf
     "wd"  'delete-window
-    "hv"  'describe-variable
-    "hf"  'describe-function
+    "hdv" 'describe-variable
+    "hdf" 'describe-function
+    "hdk" 'describe-key
+    "hdp" 'describe-package
     "pf"  'project-find-file
     "pp"  'project-switch-project
+    "pr"  'project-query-replace-regexp
+    "ps"  'projectile-save-project-buffers
     "me"  'manual-entry
     "mm"  'info-display-manual
     )
  )
-
-;  (defconst leader "SPC")
-;  (general-create-definer leader-def
-;    :prefix "<SPC>")
-;  ;; setting keybindings for basic edit operations
-;  (leader-def "fs" 'evil-save)
 
 (provide 'init-keybindings)
 ;;; init-keybindings.el ends here
