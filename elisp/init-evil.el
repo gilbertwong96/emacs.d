@@ -14,7 +14,10 @@
   (setq evil-want-keybinding nil)
   :hook
   (after-init . evil-mode)
+  :after general
   :config
+  (leader-def
+    "bd" 'evil-delete-buffer)
   :bind
   (:map evil-motion-state-map
         ("s-h" . evil-window-left)

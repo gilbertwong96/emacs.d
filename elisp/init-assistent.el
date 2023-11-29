@@ -19,5 +19,14 @@
   (setq copilot-max-char 1000000)
   )
 
+(use-package imenu-list
+  :straight t
+  :ensure t
+  :after general
+  :config
+  (leader-def
+    "'" 'imenu-list-smart-toggle)
+  )
+
 (provide 'init-assistent)
 ;;; init-assistent.el ends here

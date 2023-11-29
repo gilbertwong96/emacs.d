@@ -10,7 +10,6 @@
 (use-package elixir-mode
   :straight t
   :ensure t
-  :demand t
   :defer t
   :hook
   (elixir-mode . eglot-ensure)

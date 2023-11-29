@@ -44,7 +44,6 @@
     "ff"  'find-file
     "fs"  'save-buffer
     "bb"  'consult-buffer
-    "bk"  'kill-buffer
     "qr"  'restart-emacs
     "qq"  'save-buffers-kill-emacs
     "wm"  'maximize-window

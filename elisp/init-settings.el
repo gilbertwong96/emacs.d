@@ -30,6 +30,9 @@
 ;; Disable making backup files
 (setq make-backup-files nil)
 
+;; Enable file auto save
+(setq auto-save-visited-mode t)
+
 ;; Enable column mode
 (column-number-mode t)
 

@@ -6,6 +6,13 @@
 
 ;;; Code:
 
+(use-package org
+  :straight t
+  :defer t
+  :custom
+  (org-todo-keywords '((sequence "TODO" "DOING" "DONE")))
+  )
+
 (use-package org-roam
   :straight t
   :ensure t
