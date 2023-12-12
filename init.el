@@ -40,6 +40,7 @@
 (use-package init-lsp)
 (use-package init-dockerfile)
 
+(use-package init-cc)
 (use-package init-config)
 (use-package init-elisp)
 (use-package init-shell)
@@ -67,6 +68,7 @@
  '(evil-undo-system 'undo-redo)
  '(evil-want-keybinding nil)
  '(global-evil-collection-unimpaired-mode t)
+ '(safe-local-variable-values '((allout-layout . t)))
  '(which-key-allow-evil-operators nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

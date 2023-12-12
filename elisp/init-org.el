@@ -18,6 +18,7 @@
   :ensure t
   :defer t
   :custom
+  (org-hide-emphasis-markers t)
   (org-roam-directory "~/RoamNotes")
   (org-roam-complete-everywhere t)
   (org-roam-dailies-capture-templates
@@ -42,6 +43,7 @@
     "ni" 'org-roam-node-insert
     "ndY" 'org-roam-dailies-capture-yesterday
     "ndT" 'org-roam-dailies-capture-tomorrow
+    "ndt" 'org-roam-dailies-capture-today
     )
 
   (leader-def
