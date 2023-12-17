@@ -50,7 +50,8 @@
     "nL"  'my/org-roam-find-life
     "ns"  'my/org-roam-find-study
     "ntp" 'my/org-roam-capture-project-task
-    "nts" 'my/org-roam-capture-project-task
+    "nts" 'my/org-roam-capture-study-task
+    "ntl" 'my/org-roam-capture-life-task
     "ndY" 'org-roam-dailies-capture-yesterday
     "ndT" 'org-roam-dailies-capture-tomorrow
     "ndt" 'org-roam-dailies-capture-today
@@ -74,7 +75,13 @@
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
+        org-roam-ui-open-on-start t)
+  :init
+  (leader-def
+    :keymaps 'org-roam-mode-map
+    "nu" 'org-roam-ui-open
+    )
+  )
 
 (defun org-roam-node-insert-immediate (arg &rest args)
   "Create a new note and insert a link in the current document without opening
