@@ -55,7 +55,7 @@
 (when (eq system-type 'darwin)
 
       ;; default Latin font (e.g. Consolas)
-      (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font")
+      (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
       ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
 
       ;; default font size (point * 10)
@@ -135,6 +135,7 @@
       '(("TODO"   . "#FF0000")
         ("FIXME"  . "#FF0000")
         ("NOTE"   . "#FFFFFF")
+        ("WARN"   . "#FF4500")
         ("DEBUG"  . "#A020F0")
         ("GOTCHA" . "#FF4500")
         ("STUB"   . "#1E90FF")))

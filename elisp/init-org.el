@@ -6,6 +6,10 @@
 
 ;;; Code:
 
+(use-package simple-httpd
+  :straight t
+  :ensure t)
+
 (use-package org
   :straight t
   :defer t

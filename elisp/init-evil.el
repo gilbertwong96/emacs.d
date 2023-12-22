@@ -23,7 +23,11 @@
         ("s-h" . evil-window-left)
         ("s-j" . evil-window-down)
         ("s-k" . evil-window-up)
-        ("s-l" . evil-window-right))
+        ("s-l" . evil-window-right)
+        ("s-t" . tab-new)
+        ("s-]" . tab-next)
+        ("s-[" . tab-previous)
+        )
   )
 
 (use-package evil-collection
@@ -42,14 +46,11 @@
   (setq-default evil-escape-key-sequence "jk")
   (setq-default evil-escape-delay 0.08))
 
-;; (use-package accelerate
-;;   :straight t
-;;   :config
-;;   (accelerate previous-line 2)
-;;   (accelerate next-line 2)
-;;   (accelerate forward-char 2)
-;;   (accelerate backward-char 2)
-;;   )
+(use-package evil-surround
+  :straight t
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
 
 (provide 'init-evil)
 ;;; init-evil.el ends here

@@ -13,6 +13,7 @@
   :defer t
   :hook
   (erlang-mode . eglot-ensure)
+  (erlang-mode . flymake-mode)
   )
 
 (provide 'init-erlang)
