@@ -1,4 +1,4 @@
-;;; init-lsp.el -*- lexical-binding: t; -*-
+;;; Package --- init-lsp.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -6,13 +6,14 @@
 
 ;;; Code:
 
-
 (use-package eglot
   :straight t
   :ensure t
   :custom
   (eglot-send-changes-idle-time 1 "Send changes after 2 seconds idle time")
   :defer t
+  :hook
+  (eglot-managed-mode . flymake-mode)
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (local-leader-def

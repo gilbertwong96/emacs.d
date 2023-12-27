@@ -1,8 +1,17 @@
-;;; init-elisp.el -*- lexical-binding: t; -*-
+;;; Package --- init-elisp.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
 ;; Enhance emacs-lisp-mode
+
+;;; Code:
+
+
+(use-package paredit
+  :straight t
+  :hook
+  (emacs-lisp-mode . enable-paredit-mode)
+  )
 
 (use-package elisp-slime-nav
   :straight t
@@ -11,10 +20,16 @@
   :hook
   (emacs-lisp-mode . turn-on-elisp-slime-nav-mode)
   (emacs-lisp-mode . turn-on-elisp-slime-nav-mode)
+  (emacs-lisp-mode . flymake-mode)
+  (emacs-lisp-mode . (lambda () (setq truncate-lines t)))
   :config
   (general-def 'normal emacs-lisp-mode-map
     "K" 'elisp-slime-nav-describe-elisp-thing-at-point)
   )
+
+(toggle-truncate-lines)
+
+;; (setq-default truncate-lines nil)
 
 (provide 'init-elisp)
 ;;; init-elisp.el ends here

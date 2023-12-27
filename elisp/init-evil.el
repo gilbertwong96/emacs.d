@@ -16,6 +16,9 @@
   (after-init . evil-mode)
   :after general
   :config
+  (defalias #'forward-evil-word #'forward-evil-symbol)
+  ;; make evil-search-word look for symbol rather than word boundaries
+  (setq-default evil-symbol-word-search t)
   (leader-def
     "bd" 'evil-delete-buffer)
   :bind

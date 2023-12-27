@@ -1,4 +1,4 @@
-;;; init-settings.el -*- lexical-binding: t; -*-
+;;; Package --- Summary init-settings.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -43,11 +43,11 @@
 ;; (setq scroll-margin 15)
 
 ;; Set transparency
-(defun set-transparency (val)
-  "Setting transparency for emacs"
+(defun set-transparency (value)
+  "Setting transparency VALUE for Emacs."
   (interactive
    (list (read-number "Transparent value: ")))
-  (set-frame-parameter nil 'alpha val)
+  (set-frame-parameter nil 'alpha value)
   )
 
 (set-transparency 100)

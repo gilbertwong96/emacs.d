@@ -1,4 +1,4 @@
-;;; init-erlang.el -*- lexical-binding: t; -*-
+;;; Package ---  init-erlang.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -9,11 +9,11 @@
 (use-package erlang
   :straight t
   :mode ("rebar\\.\\(config\\|lock\\)" . erlang-mode)
-  :ensure
-  :defer t
+  :ensure t
   :hook
   (erlang-mode . eglot-ensure)
-  (erlang-mode . flymake-mode)
+  ;; (erlang-mode . flymake-mode)
+  (erlang-mode . (lambda () (setq truncate-lines t)))
   )
 
 (provide 'init-erlang)
