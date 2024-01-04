@@ -1,4 +1,4 @@
-;;; init-shell.el -*- lexical-binding: t; -*-
+;;; package --- summary init-shell.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

@@ -1,4 +1,4 @@
-;;; init-org.el -*- lexical-binding: t; -*-
+;;; package --- Summary init-org.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -88,12 +88,11 @@
   )
 
 (defun org-roam-node-insert-immediate (arg &rest args)
-  "Create a new note and insert a link in the current document without opening
-the new note’s buffer"
+  "Create a new node and insert a link in the current document.
+The node is from the  `ARG' or `ARGS', and this operation will not
+open the new node’s buffer."
   (interactive "P")
-  (let ((args (push arg args))
-        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
-                                                  '(:immediate-finish t)))))
+  (let ((args (push arg args)))
     (apply #'org-roam-node-insert args)))
 
 (defun my/org-roam-filter-by-tag (tag-name)
@@ -115,8 +114,8 @@ the new note’s buffer"
                 )))
 
 (defun my/org-roam-project-finalize-hook ()
-  "Adds the captured project file to `org-agenda-files' if the
-capture was not aborted."
+  "Add the captured project file to 'org-agenda-files'.
+Only take effect when the capture was not aborted."
   ;; Remove the hook since it was added temporarily
   (remove-hook 'org-capture-after-finalize-hook #'my/org-roam-project-finalize-hook)
 

@@ -14,6 +14,9 @@
   :defer t
   :hook
   (eglot-managed-mode . flymake-mode)
+  :config
+  (add-to-list 'eglot-server-programs
+               '(erlang-mode . ("elp" "server")))
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (local-leader-def
@@ -26,4 +29,10 @@
     )
   )
 
+(use-package eglot-x
+  :straight (:host github :repo "nemethf/eglot-x" :files ("*.el"))
+  :ensure t
+  :after eglot)
+
 (provide 'init-lsp)
+;;; init-lsp.el ends here
