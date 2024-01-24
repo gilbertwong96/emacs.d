@@ -1,4 +1,4 @@
-;;; init-git.el -*- lexical-binding: t; -*-
+;;; Package --- init-git.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

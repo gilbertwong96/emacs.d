@@ -30,6 +30,10 @@
         ("s-t" . tab-new)
         ("s-]" . tab-next)
         ("s-[" . tab-previous)
+        ("s-<right>" . enlarge-window-horizontally)
+        ("s-<left>" . shrink-window-horizontally)
+        ("s-<up>" . enlarge-window)
+        ("s-<down>" . shrink-window)
         )
   )
 
@@ -38,7 +42,10 @@
   :after evil
   :ensure t
   :config
-  (evil-collection-init))
+  (evil-collection-init)
+  (evil-collection-define-key 'normal 'dired-mode-map
+    " " 'nil)
+  )
 
 (use-package evil-escape
   :straight t

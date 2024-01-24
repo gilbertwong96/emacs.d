@@ -15,6 +15,9 @@
   :defer t
   :custom
   (org-todo-keywords '((sequence "TODO" "DOING" "DONE")))
+  :config
+  (setq org-latex-create-formula-image-program 'dvisvgm)
+  (plist-put org-format-latex-options :scale 1.5)
   :init
   (leader-def
     "oa" 'org-agenda
