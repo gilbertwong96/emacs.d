@@ -43,9 +43,20 @@
   :ensure t
   :config
   (evil-collection-init)
-  (evil-collection-define-key 'normal 'dired-mode-map
-    " " 'nil)
+  (defun ignore-dired-space ()
+    (evil-collection-define-key 'normal 'dired-mode-map
+      " " 'nil)
+    )
+  (add-hook 'dired-mode-hook 'ignore-dired-space)
   )
+
+;; (use-package dired-mode
+;;   :after evil-collection
+;;   :config
+;;   (require 'evil-collection)
+  ;; (evil-collection-define-key 'normal 'dired-mode-map
+  ;;   " " 'nil)
+;;   )
 
 (use-package evil-escape
   :straight t
