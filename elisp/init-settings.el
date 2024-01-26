@@ -96,6 +96,9 @@
 ;; Enable display-line-numbers-mode for program files
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
+;; Enable hs-minor-mode for program files
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+
 ;; Show trailing spaces
 (dolist (hook (list
                'prog-mode-hook
