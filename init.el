@@ -17,10 +17,7 @@
 ;; Patch for emacs lisp
 (use-package el-patch :straight t :defer t)
 
-(use-package protobuf-mode
-  :straight t
-  :defer t
-  :ensure t)
+(use-package protobuf-mode :straight t :defer t :ensure t)
 
 ;; Basic setting for editor
 (use-package init-theme)
@@ -54,29 +51,6 @@
 
 ;; Knowledge Management System
 (use-package init-org)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-disable-insert-state-bindings t)
- '(evil-escape-delay 0.08)
- '(evil-escape-key-sequence [106 107])
- '(evil-escape-mode t)
- '(evil-mode t)
- '(evil-undo-system 'undo-redo)
- '(evil-want-keybinding nil)
- '(global-evil-collection-unimpaired-mode t)
- '(safe-local-variable-values '((allout-layout . t)))
- '(which-key-allow-evil-operators nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 
 (provide 'init)
 ;;; init.el ends here

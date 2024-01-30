@@ -10,7 +10,7 @@
 (use-package paredit
   :straight t
   :hook
-  (emacs-lisp-mode . enable-paredit-mode)
+  (emacs-lisp-mode . paredit-mode)
   )
 
 (use-package elisp-slime-nav

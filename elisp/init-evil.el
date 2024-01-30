@@ -1,4 +1,4 @@
-;;; init-evil.el -*- lexical-binding: t; -*-
+;;; Package --- init-evil.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -8,10 +8,13 @@
 
 (use-package evil
   :straight t
+  :custom
+  (evil-want-keybinding nil)
+  (evil-want-integration t)
+  (evil-undo-system 'undo-redo)
   :init
   (setq-default evil-disable-insert-state-bindings t)
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
+  ;; (setq evil-want-keybinding nil)
   :hook
   (after-init . evil-mode)
   :after general
@@ -41,8 +44,12 @@
   :straight t
   :after evil
   :ensure t
+  :custom
+  (global-evil-collection-unimpaired-mode t)
+  :hook
+  (evil-mode . evil-collection-setup)
   :config
-  (evil-collection-init)
+  ;; (evil-collection-init)
   (defun ignore-dired-space ()
     (evil-collection-define-key 'normal 'dired-mode-map
       " " 'nil)
@@ -50,28 +57,20 @@
   (add-hook 'dired-mode-hook 'ignore-dired-space)
   )
 
-;; (use-package dired-mode
-;;   :after evil-collection
-;;   :config
-;;   (require 'evil-collection)
-  ;; (evil-collection-define-key 'normal 'dired-mode-map
-  ;;   " " 'nil)
-;;   )
-
 (use-package evil-escape
   :straight t
   :after evil
-  :config
+  :custom
   (evil-escape-mode t)
-
-  (setq-default evil-escape-key-sequence "jk")
-  (setq-default evil-escape-delay 0.08))
+  (evil-escape-key-sequence "jk")
+  (evil-escape-delay 0.08))
 
 (use-package evil-surround
   :straight t
   :ensure t
-  :config
-  (global-evil-surround-mode 1))
+  :defer t
+  :hook
+  (evil-mode . evil-surround-mode))
 
 (provide 'init-evil)
 ;;; init-evil.el ends here

@@ -1,4 +1,4 @@
-;;; init-golang.el -*- lexical-binding: t; -*-
+;;; Package --- init-golang.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -14,4 +14,4 @@
 
 ;;; Code:
 (provide 'init-golang)
-;;; init-erlang.el ends here
+;;; init-golang.el ends here

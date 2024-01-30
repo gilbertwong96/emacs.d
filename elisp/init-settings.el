@@ -1,4 +1,4 @@
-;;; Package --- Summary init-settings.el -*- lexical-binding: t; -*-
+;;; Package --- init-settings.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -123,8 +123,14 @@
 ;; Toggle auto insert of closing bracket
 
 ;; auto close bracket insertion.
-(add-hook 'prog-mode-hook #'electric-pair-mode)
-(setq electric-pair-pairs '((?\{ . ?\})))
+(use-package electric
+  :hook
+  (prog-mode . electric-pair-mode)
+  :custom
+  (electric-pair-pairs '((?\{ . ?\})))
+  )
+
+;; (add-hook 'prog-mode-hook #'electric-pair-mode)
 
 (customize-set-variable 'tramp-save-ad-hoc-proxies t)
 

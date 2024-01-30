@@ -9,6 +9,8 @@
 (use-package which-key
   :straight t
   :defer t
+  :custom
+  (which-key-allow-evil-operators nil)
   :init
   (which-key-mode)
   :config
