@@ -8,8 +8,6 @@
   :straight t
   :ensure t
   :defer t
-  :hook
-  (go-mode . eglot-ensure)
   )
 
 ;;; Code:

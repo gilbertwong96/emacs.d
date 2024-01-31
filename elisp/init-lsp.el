@@ -14,6 +14,11 @@
   :defer t
   :hook
   (eglot-managed-mode . flymake-mode)
+  (c-mode . eglot-ensure)
+  (erlang-mode . eglot-ensure)
+  (sh-mode . eglot-ensure)
+  (go-mode . eglot-ensure)
+  (haskell-mode . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
                '(erlang-mode . ("elp" "server")))

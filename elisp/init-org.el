@@ -14,8 +14,10 @@
 (use-package org
   :straight t
   :defer t
-  ;; :custom
+  :ensure t
   ;; (org-todo-keywords '((sequence "TODO" "DOING" "DONE")))
+  :hook
+  (org-mode . corfu-mode)
   :config
   (setq org-latex-create-formula-image-program 'dvisvgm)
   (plist-put org-format-latex-options :scale 1.5)
@@ -28,7 +30,6 @@
 (use-package org-roam
   :straight t
   :ensure t
-  :demand t
   :defer t
   :custom
   (org-hide-emphasis-markers t)
@@ -261,6 +262,7 @@ Only take effect when the capture was not aborted."
   :straight
   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
   :after org-roam
+  :defer t
   ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
   ;;         a hookable mode anymore, you're advised to pick something yourself
   ;;         if you don't care about startup time, use

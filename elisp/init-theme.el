@@ -8,6 +8,7 @@
 
 (use-package all-the-icons
   :straight t
+  :defer t
   :ensure t)
 
 (use-package doom-themes

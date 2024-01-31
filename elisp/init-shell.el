@@ -11,7 +11,6 @@
   :defer t
   :commands flymake-shellcheck-load
   :hook
-  (sh-mode . eglot-ensure)
   (sh-mode . flymake-shellcheck-load)
   (bash-ts-mode . flymake-shellcheck-load))
 

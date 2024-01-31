@@ -14,6 +14,15 @@
   ;; To disable collection of benchmark data after init is done.
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
+(use-package straight
+  :custom
+  (straight-check-for-modifications '(watch-files find-when-checking))
+  (straight-use-package-by-default nil)
+  )
+
+;; Place user settings to elisp dir
+(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+
 ;; Patch for emacs lisp
 (use-package el-patch :straight t :defer t)
 
@@ -37,7 +46,6 @@
 (use-package init-lsp)
 (use-package init-dockerfile)
 
-(use-package init-cc)
 (use-package init-config)
 (use-package init-elisp)
 (use-package init-shell)
@@ -49,7 +57,7 @@
 (use-package init-elixir)
 
 
-;; Knowledge Management System
+;; ;; Knowledge Management System
 (use-package init-org)
 
 (provide 'init)

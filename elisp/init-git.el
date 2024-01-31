@@ -20,7 +20,7 @@
 (use-package git-gutter
   :straight t
   :ensure t
-  :defer t
+  ;; :defer t
   :custom
   (git-gutter:update-interval 5 "set update interval 5 seconds")
   :hook

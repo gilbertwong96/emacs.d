@@ -1,6 +1,7 @@
 straight/build*
 straight/repos/
 straight/build-cache.el
+straight/watcher/
 straight/modified/
 elpa/
 eshell/

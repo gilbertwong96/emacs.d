@@ -1,4 +1,4 @@
-;;; init-assistent.el -*- lexical-binding: t; -*-
+;;; Package --- init-assistent.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -13,7 +13,7 @@
   :custom
   (copilot-idle-delay 1 "Set Copilot-idle-delay to 1s")
   :hook
-  (prog-mode . copilot-mode)
+  (erlang-mode . copilot-mode)
   :config
   (define-key copilot-completion-map (kbd "M-j") 'copilot-accept-completion)
   (setq copilot-max-char 1000000)

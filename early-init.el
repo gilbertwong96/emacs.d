@@ -1,4 +1,10 @@
-;;; early-init.el -*- lexical-binding: t; -*-
+;;; Package --- early-init.el -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;; Early init file
+
+;;; Code:
 
 (setq package-enable-at-startup nil)
 
@@ -18,6 +24,9 @@
 (scroll-bar-mode -1)
 ;; (fringe-mode -1)
 
+(add-to-list 'default-frame-alist '(width  . 160))
+(add-to-list 'default-frame-alist '(height . 50))
+
 ;; Use straight.el as package manager
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -32,9 +41,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Intergate use-package
-(straight-use-package 'use-package)
 
-;; Place user settings to elisp dir
-(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
-
+(provide 'early-init)
+;;; early-init.el ends here

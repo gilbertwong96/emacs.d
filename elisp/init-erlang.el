@@ -8,13 +8,12 @@
 
 (use-package erlang
   :straight t
+  :ensure t
+  :defer t
   :mode
   ("rebar\\.\\(config\\|lock\\)" . erlang-mode)
   ("elvis\\.config" . erlang-mode)
-  :ensure t
   :hook
-  (erlang-mode . eglot-ensure)
-  ;; (erlang-mode . flymake-mode)
   (erlang-mode . (lambda () (setq truncate-lines t)))
   )
 

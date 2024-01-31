@@ -1,4 +1,4 @@
-;;; init-rust.el -*- lexical-binding: t; -*-
+;;; Package --- init-rust.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

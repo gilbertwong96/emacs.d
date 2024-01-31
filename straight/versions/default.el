@@ -88,7 +88,6 @@
  ("themes" . "ff26f26ea3d761375f5fc4070438fbd0f3473d33")
  ("transient" . "b14f44e91341ca70c21946baf70162dd13a30310")
  ("treemacs" . "df26b6ab9a0f467e5ff99f7ed97551ccf756e06c")
- ("use-package" . "a6e856418d2ebd053b34e0ab2fda328abeba731c")
  ("vertico" . "4a7da56b02c6aefff8f6b4574a530a7cb54bc21a")
  ("with-editor" . "d43db3c58c34d4dbc3ce6f68ec24fecf3452b20e")
  ("xref" . "d64563f3c3d20a53220f56caadb6839248393a25")

@@ -1,4 +1,4 @@
-;;; init-treemacs.el -*- lexical-binding: t; -*-
+;;; Package --- init-treemacs.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

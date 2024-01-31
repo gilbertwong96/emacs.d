@@ -1,4 +1,4 @@
-;;; init-haskell.el -*- lexical-binding: t; -*-
+;;; Package --- init-haskell.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -10,8 +10,6 @@
   :straight t
   :ensure t
   :defer t
-  :hook
-  (haskell-mode . eglot-ensure)
   )
 
 (provide 'init-haskell)

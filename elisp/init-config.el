@@ -1,4 +1,4 @@
-;;; init-config.el -*- lexical-binding: t; -*-
+;;; Package --- init-config.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -18,14 +18,18 @@
 
 ;; Major mode for Hashicorp Configuration Language.
 (use-package hcl-mode
-  :straight t)
+  :straight t
+  :defer t
+  )
 
 (use-package terraform-mode
   :straight t
   :custom
   (terraform-format-on-save t)
+  :defer t
   :hook
   (terraform-mode . eglot-ensure)
   )
 
 (provide 'init-config)
+;;; init-config.el ends here
