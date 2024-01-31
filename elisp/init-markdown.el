@@ -1,4 +1,4 @@
-;;; init-markdown.el -*- lexical-binding: t; -*-
+;;; Package ---  init-markdown.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -8,7 +8,6 @@
 
 (use-package markdown-mode
   :straight t
-  :ensure t
   :defer t
   :hook
   (markdown-mode . eglot-ensure)
@@ -19,14 +18,6 @@
   (fixed-pitch ((t (:family "JetBrainsMono Nerd Font"))))
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
-
-;; (use-package poly-markdown
-;;   :straight t
-;;   :ensure t
-;;   :defer t
-;;   :hook
-;;   (poly-markdown-mode . markdown-mode)
-;;   )
 
 (provide 'init-markdown)
 ;;; init-markdown.el ends here
