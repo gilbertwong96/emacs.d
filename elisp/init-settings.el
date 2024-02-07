@@ -56,6 +56,7 @@
 
       ;; default Latin font (e.g. Consolas)
       (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
+      ;; (set-face-attribute 'default nil :family "Fira Code")
       ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
 
       ;; default font size (point * 10)
@@ -80,6 +81,28 @@
   (doom-modeline-mode 1)
   (setq inhibit-compacting-font-caches t))
 
+(use-package ligature
+  :straight t
+  :ensure t
+  :config
+  ;; Enable the www ligature in every possible major mode
+  (ligature-set-ligatures 't '("www"))
+
+  ;; Enable ligatures in programming modes
+  (ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
+                                       ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+                                       "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
+                                       "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
+                                       "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
+                                       "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
+                                       "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
+                                       "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
+                                       "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
+                                       "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
+
+  (global-ligature-mode 't)
+  )
+
 ;; Set encoding to utf8
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
@@ -98,6 +121,9 @@
 
 ;; Enable hs-minor-mode for program files
 (add-hook 'prog-mode-hook #'hs-minor-mode)
+
+(customize-set-variable 'display-fill-column-indicator-column 100)
+(add-hook 'prog-mode-hook (lambda () (display-fill-column-indicator-mode)))
 
 ;; Show trailing spaces
 (dolist (hook (list
