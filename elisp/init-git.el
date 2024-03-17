@@ -15,14 +15,16 @@
     "gs" 'magit-status
     "gb" 'magit-blame-addition
     "gc" 'magit-clone
-    ))
+    )
+  :ensure-system-package git
+  )
 
 (use-package git-gutter
   :straight t
   :ensure t
   :defer t
   :custom
-  (git-gutter:update-interval 5 "set update interval 5 seconds")
+  (git-gutter:update-interval 1 "set update interval 1 seconds")
   (git-gutter:modified-sign "│")
   (git-gutter:added-sign "│")
   (git-gutter:deleted-sign "│")

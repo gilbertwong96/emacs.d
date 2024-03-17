@@ -9,7 +9,9 @@
 (use-package haskell-mode
   :straight t
   :ensure t
-  :defer t
+  :ensure-system-package (ghc haskell-language-server)
+  :hook
+  (haskell-mode . eglot-ensure)
   )
 
 (provide 'init-haskell)

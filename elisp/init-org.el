@@ -1,4 +1,4 @@
-;;; package --- Summary init-org.el -*- lexical-binding: t; -*-
+;;; package --- init-org.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -14,6 +14,7 @@
 (use-package org
   :straight t
   :defer t
+  :after consult
   :ensure t
   ;; (org-todo-keywords '((sequence "TODO" "DOING" "DONE")))
   :hook
@@ -23,8 +24,9 @@
   (plist-put org-format-latex-options :scale 1.5)
   :init
   (leader-def
-    "oa" 'org-agenda
-    "oc" 'consult-org-agenda)
+    "o"  '(:ignore t :which-key "org")
+    "oa" '(org-agenda :which-key "Agenda")
+    "ol" '(consult-org-agenda :which-key "List Agenda"))
   )
 
 (use-package org-roam
@@ -152,21 +154,6 @@ Only take effect when the capture was not aborted."
      :templates '(("i" "inbox" plain "* %?"
                    :if-new (file+head "Inbox.org" "#+title: Inbox\n")))))
 
-  (defun my/org-roam-capture-project-task ()
-    (interactive)
-    ;; Add the project file to the agenda after capture is finished
-    (add-hook 'org-capture-after-finalize-hook #'my/org-roam-project-finalize-hook)
-
-    ;; Capture the new task, creating the project file if necessary
-    (org-roam-capture-
-     :node (org-roam-node-read
-            nil
-            (my/org-roam-filter-by-tag "Project"))
-     :templates '(("p" "project" plain "** TODO %?"
-                   :if-new (file+head+olp "%<%Y%m%d%H%M%S>-${slug}.org"
-                                          "#+title: ${title}\n#+category: Project\n#+filetags: Project"
-                                          ("Tasks"))))))
-
   (defun my/org-roam-capture-study-task ()
     (interactive)
     ;; Add the project file to the agenda after capture is finished
@@ -237,19 +224,22 @@ Only take effect when the capture was not aborted."
 
 
   (leader-def
-    "nf"  'org-roam-node-find
-    "nb"  'my/org-roam-capture-inbox
-    "ni"  'org-roam-node-insert
-    "nI"  'org-roam-node-insert-immediate
-    "np"  'my/org-roam-find-project
-    "nL"  'my/org-roam-find-life
-    "ns"  'my/org-roam-find-study
-    "ntp" 'my/org-roam-capture-project-task
-    "nts" 'my/org-roam-capture-study-task
-    "ntl" 'my/org-roam-capture-life-task
-    "ndY" 'org-roam-dailies-capture-yesterday
-    "ndT" 'org-roam-dailies-capture-tomorrow
-    "ndt" 'org-roam-dailies-capture-today
+    "n"   '(:ignore t :which-key "org roam")
+    "nf"  '(org-roam-node-find :which-key "Find Node")
+    "nb"  '(my/org-roam-capture-inbox :which-key "Capture Inbox")
+    "ni"  '(org-roam-node-insert :which-key "Insert Node")
+    "nI"  '(org-roam-node-insert-immediate :which-key "New Node")
+    "nL"  '(my/org-roam-find-life :which-key "Find Life")
+    "np"  '(my/org-roam-find-project :which-key "Find Project")
+    "ns"  '(my/org-roam-find-study :which-key "Find Study")
+    "nc"  '(:ignore t :which-key "capture")
+    "ncp" '(my/org-roam-capture-project-task :which-key "Project Task")
+    "ncs" '(my/org-roam-capture-study-task :which-key "Study Task")
+    "ncl" '(my/org-roam-capture-life-task :which-key "Life Task")
+    "nd"  '(:ignore t :which-key "daily")
+    "ndY" '(org-roam-dailies-capture-yesterday :which-key "Capture Yesterday")
+    "ndT" '(org-roam-dailies-capture-tomorrow :which-key "Capture Tomorrow")
+    "ndt" '(org-roam-dailies-capture-today :which-key "Capture Today")
     )
 
   (leader-def

@@ -26,18 +26,17 @@
     "bd" 'evil-delete-buffer)
   :bind
   (:map evil-motion-state-map
-        ("s-h" . evil-window-left)
-        ("s-j" . evil-window-down)
-        ("s-k" . evil-window-up)
-        ("s-l" . evil-window-right)
-        ("s-t" . tab-new)
-        ("s-]" . tab-next)
-        ("s-[" . tab-previous)
-        ("s-<right>" . enlarge-window-horizontally)
-        ("s-<left>" . shrink-window-horizontally)
-        ("s-<up>" . enlarge-window)
-        ("s-<down>" . shrink-window)
-        )
+        ("M-h" . evil-window-left)
+        ("M-j" . evil-window-down)
+        ("M-k" . evil-window-up)
+        ("M-l" . evil-window-right)
+        ("M-t" . tab-new)
+        ("M-]" . tab-next)
+        ("M-[" . tab-previous)
+        ("M-<right>" . enlarge-window-horizontally)
+        ("M-<left>" . shrink-window-horizontally)
+        ("M-<up>" . enlarge-window)
+        ("M-<down>" . shrink-window))
   )
 
 (use-package evil-collection
@@ -68,9 +67,8 @@
 (use-package evil-surround
   :straight t
   :ensure t
-  :defer t
-  :hook
-  (evil-mode . evil-surround-mode))
+  :config
+  (global-evil-surround-mode))
 
 (provide 'init-evil)
 ;;; init-evil.el ends here

@@ -1,4 +1,4 @@
-;;; init-keybindings.el -*- lexical-binding: t; -*-
+;;; Package --- init-keybindings.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -19,6 +19,7 @@
 
 (use-package general
   :straight t
+  :after which-key
   :ensure t
   :config
   (general-auto-unbind-keys)
@@ -42,26 +43,32 @@
     )
 
   (leader-def
-    "SPC" 'execute-extended-command
-    "ff"  'find-file
-    "fs"  'save-buffer
-    "bb"  'consult-buffer
-    "qr"  'restart-emacs
-    "qq"  'save-buffers-kill-emacs
-    "wm"  'maximize-window
-    "w="  'balance-windows
-    "rf"  'recentf
-    "wd"  'delete-window
-    "hdv" 'describe-variable
-    "hdf" 'describe-function
-    "hdk" 'describe-key
-    "hdp" 'describe-package
-    "pf"  'project-find-file
-    "pp"  'project-switch-project
-    "pr"  'project-query-replace-regexp
-    "ps"  'projectile-save-project-buffers
-    "me"  'manual-entry
-    "mm"  'info-display-manual
+    "SPC" '(execute-extended-command :which-key "Commands")
+    "f"   '(:ignore t :which-key "files")
+    "ff"  '(find-file :which-key "Find")
+    "fs"  '(save-buffer :which-key "Save")
+    "fr"  '(recentf :which-key "Recent")
+    "q"   '(:ignore t :which-key "leave")
+    "qr"  '(restart-emacs :which-key "Restart")
+    "qq"  '(save-buffers-kill-emacs :which-key "Quit")
+    "w"   '(:ignore t :which-key "window")
+    "wm"  '(maximize-window :which-key "Maximize")
+    "w="  '(balance-windows :which-key "Balance")
+    "wd"  '(delete-window :which-key "Delete")
+    "h"   '(:ignore t :which-key "help")
+    "hd"  '(:ignore t :which-key "describe")
+    "hdv" '(describe-variable :which-key "Variable")
+    "hdf" '(describe-function :which-key "Function")
+    "hdk" '(describe-key :which-key "Key")
+    "hdp" '(describe-package :which-key "Package")
+    "p"   '(:ignore t :which-key "project")
+    "pf"  '(project-find-file :which-key "Find File")
+    "pp"  '(project-switch-project :which-key "Switch Project")
+    "pr"  '(project-query-replace-regexp :which-key "Query Replace Regex")
+    "ps"  '(projectile-save-project-buffers :which-key "Save Project Buffers")
+    "m"   '(:ignore t :which-key "man")
+    "me"  '(manual-entry :which-key "Unix Command")
+    "mm"  '(info-display-manual :which-key "Emacs Package")
     )
  )
 

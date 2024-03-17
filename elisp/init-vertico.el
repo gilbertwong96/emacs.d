@@ -1,4 +1,4 @@
-;;; init-vertico.el -*- lexical-binding: t; -*-
+;;; Package --- init-vertico.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -134,6 +134,7 @@
 ;; Example configuration for Consult
 (use-package consult
   :straight t
+  :after general
   :ensure t
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
@@ -150,8 +151,9 @@
     "cl" 'consult-line
     "cL" 'consult-line-multi
     "pb" 'consult-project-buffer
+    "bb" '(consult-buffer :which-key "Switch Buffer")
     "gg" 'consult-git-grep
-    "/" 'consult-ripgrep
+    "/"  '(consult-ripgrep :which-key "RipGrep")
     "mi" 'consult-imenu
     "mI" 'consult-imenu-multi
     )
@@ -236,10 +238,21 @@
   ;; (setq consult-project-function nil)
 )
 
-
 (use-package consult-todo
   :straight (:host github :repo "liuyinz/consult-todo" :files ("*.el"))
   :defer t
   :ensure t)
 
+(use-package embark-consult
+  :straight t
+  :ensure t ; only need to install it, embark loads it after consult if found
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 (provide 'init-vertico)
+;;; init-vertico.el ends here

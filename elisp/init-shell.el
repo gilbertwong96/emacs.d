@@ -12,7 +12,9 @@
   :commands flymake-shellcheck-load
   :hook
   (sh-mode . flymake-shellcheck-load)
-  (bash-ts-mode . flymake-shellcheck-load))
+  (bash-ts-mode . flymake-shellcheck-load)
+  :ensure-system-package shellcheck
+  )
 
 (use-package fish-mode
   :straight t

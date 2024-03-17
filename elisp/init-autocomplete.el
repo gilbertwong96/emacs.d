@@ -30,8 +30,7 @@
   :hook ((prog-mode . corfu-mode)
          (shell-mode . corfu-mode)
          (eshell-mode . corfu-mode)
-         (org-mode . corfu-mode)
-	     )
+         (org-mode . corfu-mode))
   ;; Use TAB for cycling, default is `corfu-complete'.
   :bind
   (:map corfu-map
@@ -46,6 +45,7 @@
   ;; :init
   :config
   (global-corfu-mode)
+  (corfu-popupinfo-mode)
   (defun corfu-enable-in-minibuffer ()
     "Enable Corfu in the minibuffer if `completion-at-point' is bound."
     (when (where-is-internal #'completion-at-point (list (current-local-map)))
@@ -116,6 +116,7 @@
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   ;;(add-to-list 'completion-at-point-functions #'cape-history)
   ;;(add-to-list 'completion-at-point-functions #'cape-keyword)
   ;;(add-to-list 'completion-at-point-functions #'cape-tex)
@@ -126,6 +127,22 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
 )
+
+(use-package kind-icon
+  :straight t
+  :ensure t
+  :after corfu
+                                        ;:custom
+  ;; (kind-icon-blend-background t)
+  ;; (kind-icon-default-face 'corfu-default) ; only needed with blend-background
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+(use-package yasnippet
+  :straight t
+  :hook
+  (prog-mode . yas-minor-mode)
+  )
 
 (provide 'init-autocomplete)
 ;;; init-autocomplete.el ends here

@@ -7,7 +7,9 @@
 (use-package go-mode
   :straight t
   :ensure t
-  :defer t
+  :ensure-system-package golang
+  :hook
+  (go-mode . eglot-ensure)
   )
 
 ;;; Code:

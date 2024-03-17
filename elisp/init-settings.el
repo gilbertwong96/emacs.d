@@ -52,26 +52,48 @@
 
 (set-transparency 100)
 
-(when (eq system-type 'darwin)
+;; (when (eq system-type 'darwin)
 
-      ;; default Latin font (e.g. Consolas)
-      (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
-      ;; (set-face-attribute 'default nil :family "Fira Code")
-      ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
+;;       ;; default Latin font (e.g. Consolas)
+;;       (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
+;;       ;; (set-face-attribute 'default nil :family "Fira Code")
+;;       ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
 
-      ;; default font size (point * 10)
-      ;;
-      ;; WARNING!  Depending on the default font,
-      ;; if the size is not supported very well, the frame will be clipped
-      ;; so that the beginning of the buffer may not be visible correctly.
-      (set-face-attribute 'default nil :height 130)
+;;       ;; default font size (point * 10)
+;;       ;;
+;;       ;; WARNING!  Depending on the default font,
+;;       ;; if the size is not supported very well, the frame will be clipped
+;;       ;; so that the beginning of the buffer may not be visible correctly.
+;;       (set-face-attribute 'default nil :height 130)
 
-      ;; use specific font for CJK charset.
-      ;; if you want to use different font size for specific charset,
-      ;; add :size POINT-SIZE in the font-spec.
-      (set-fontset-font t 'han "PingFang SC")
+;;       ;; use specific font for CJK charset.
+;;       ;; if you want to use different font size for specific charset,
+;;       ;; add :size POINT-SIZE in the font-spec.
+;;       (set-fontset-font t 'han "PingFang SC")
 
-      ;; you may want to add different for other charset in this way.
+;;       ;; you may want to add different for other charset in this way.
+;;       )
+
+(cond ((eq system-type 'darwin)
+       (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
+       ;; (set-face-attribute 'default nil :family "Fira Code")
+       ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
+
+       ;; default font size (point * 10)
+       ;;
+       ;; WARNING!  Depending on the default font,
+       ;; if the size is not supported very well, the frame will be clipped
+       ;; so that the beginning of the buffer may not be visible correctly.
+       (set-face-attribute 'default nil :height 130)
+
+       ;; use specific font for CJK charset.
+       ;; if you want to use different font size for specific charset,
+       ;; add :size POINT-SIZE in the font-spec.
+       (set-fontset-font t 'han "PingFang SC"))
+      ((eq system-type 'gnu/linux)
+       (set-face-attribute 'default nil :family "JetBrains Mono")
+       (set-face-attribute 'default nil :height 150)
+       (set-fontset-font t 'han "WenQuanYi Micro Hei"))
       )
 
 (use-package doom-modeline
@@ -89,16 +111,16 @@
   (ligature-set-ligatures 't '("www"))
 
   ;; Enable ligatures in programming modes
-  (ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
-                                       ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
-                                       "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
-                                       "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
-                                       "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
-                                       "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
-                                       "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
-                                       "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
-                                       "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
-                                       "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
+  (ligature-set-ligatures 'erlang-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
+                                         ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+                                         "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
+                                         "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
+                                         "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
+                                         "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
+                                         "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
+                                         "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
+                                         "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
+                                         "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
 
   (global-ligature-mode 't)
   )
@@ -120,10 +142,11 @@
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 ;; Enable hs-minor-mode for program files
-(add-hook 'prog-mode-hook #'hs-minor-mode)
+;; (add-hook 'prog-mode-hook #'hs-minor-mode)
 
 (customize-set-variable 'display-fill-column-indicator-column 100)
 (add-hook 'prog-mode-hook (lambda () (display-fill-column-indicator-mode)))
+(add-hook 'org-mode-hook (lambda () (display-fill-column-indicator-mode)))
 
 ;; Show trailing spaces
 (dolist (hook (list

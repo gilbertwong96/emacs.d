@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 
-;; Markdown mode for emacs
+;; Markdown mode for Emacs
 
 ;;; Code:
 
@@ -17,7 +17,9 @@
   :custom-face
   (fixed-pitch ((t (:family "JetBrainsMono Nerd Font"))))
   :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "multimarkdown")
+  :ensure-system-package marksman
+  )
 
 (provide 'init-markdown)
 ;;; init-markdown.el ends here

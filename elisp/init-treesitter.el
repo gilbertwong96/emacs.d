@@ -1,4 +1,4 @@
-;;; init-tree-sitter.el -*- lexical-binding: t; -*-
+;;; Package --- init-tree-sitter.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -6,12 +6,11 @@
 
 ;;; Code:
 
+
 (use-package treesit-auto
   :straight t
   :ensure t
-  :config
-  (setq treesit-auto-install 'prompt)
-  (global-treesit-auto-mode))
+  )
 
 (provide 'init-treesitter)
-;;; init-tree-sitter.el ends here
+;;; init-treesitter.el ends here

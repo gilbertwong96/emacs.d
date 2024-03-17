@@ -1,4 +1,4 @@
-;;; init-dockerfile.el -*- lexical-binding: t; -*-
+;;; Package --- init-dockerfile.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -8,7 +8,8 @@
 
 (use-package dockerfile-mode
   :straight t
-  :defer t
+  :ensure-system-package
+  ("/Applications/OrbStack.app" . "brew install orbstack --cask")
   )
 
 (provide 'init-dockerfile)
