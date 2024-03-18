@@ -7,6 +7,8 @@
 ;;; Code:
 
 (use-package java-mode
+  :straight t
+  :defer t
   :hook
   (java-mode . eglot-ensure)
   :ensure-system-package java)

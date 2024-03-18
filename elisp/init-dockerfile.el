@@ -8,6 +8,7 @@
 
 (use-package dockerfile-mode
   :straight t
+  :if (eq system-type 'darwin)
   :ensure-system-package
   ("/Applications/OrbStack.app" . "brew install orbstack --cask")
   )

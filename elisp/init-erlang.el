@@ -16,7 +16,10 @@
   :hook
   (erlang-mode . (lambda () (setq truncate-lines t)))
   (eglot-managed-mode . flymake-mode)
+  :if (eq system-type 'darwin)
   :ensure-system-package erlang
+  :if (eq system-type 'darwin)
+  :ensure-system-package (erlang . "brew install erlang")
   )
 
 (provide 'init-erlang)

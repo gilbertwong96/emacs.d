@@ -13,7 +13,10 @@
   :hook
   (sh-mode . flymake-shellcheck-load)
   (bash-ts-mode . flymake-shellcheck-load)
+  :if (eq system-type 'darwin)
   :ensure-system-package shellcheck
+  :if (eq system-type 'gnu/linux)
+  :ensure-system-package (shellcheck . "brew install shellcheck")
   )
 
 (use-package fish-mode
