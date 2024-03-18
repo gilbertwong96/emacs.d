@@ -74,7 +74,9 @@
 ;;       ;; you may want to add different for other charset in this way.
 ;;       )
 
+
 (cond ((eq system-type 'darwin)
+       (set-face-attribute 'variable-pitch nil :family "Iosevka Nerd Font")
        (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
        ;; (set-face-attribute 'default nil :family "Fira Code")
        ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
