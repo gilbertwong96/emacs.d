@@ -4,6 +4,7 @@ straight/build-cache.el
 straight/watcher/
 straight/modified/
 elpa/
+var/
 eshell/
 tutorial/
 projects

@@ -26,10 +26,10 @@
     "bd" 'evil-delete-buffer)
   :bind
   (:map evil-motion-state-map
-        ("M-h" . evil-window-left)
-        ("M-j" . evil-window-down)
-        ("M-k" . evil-window-up)
-        ("M-l" . evil-window-right)
+        ("s-h" . evil-window-left)
+        ("s-j" . evil-window-down)
+        ("s-k" . evil-window-up)
+        ("s-l" . evil-window-right)
         ("M-t" . tab-new)
         ("M-]" . tab-next)
         ("M-[" . tab-previous)

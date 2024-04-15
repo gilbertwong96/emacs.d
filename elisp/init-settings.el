@@ -9,94 +9,141 @@
 ;; Start Server
 (server-start)
 
-;; Do not load startup screen
-(setq inhibit-startup-screen t)
-
-;; Prevent insert tabs
-(setq-default indent-tabs-mode nil)
-
-;; Make sure the tab width is 4 characters
-(setq-default tab-width 4)
-
-;; Disable ring bell
-(setq ring-bell-function 'ignore)
-
-;; Enable auto-revert mode
-(add-hook 'after-init-hook 'global-auto-revert-mode)
-
-;; Highlight current line
-(add-hook 'after-init-hook 'global-hl-line-mode)
-
-;; Disable making backup files
-(setq make-backup-files nil)
-
-;; Enable file auto save
-(setq auto-save-visited-mode t)
-
-;; Enable column mode
-(column-number-mode t)
-
 ;; If the value is greater than 100, redisplay will never recenter point, but will always
 ;; scroll just enough text to bring point into view, even if you move far away. A value of
 ;; zero means always recenter point if it moves off screen."
-;; (setq scroll-conservatively 101)
-;; (setq scroll-margin 15)
+(defun gilbert/vim-like-scrolloff (scrolloff)
+  "Make the Emacs scroll like vim.
+If the SCROLLOFF is greater than 100, redisplay will never recenter point, but
+will always scroll just enough text to bring point into view, even if you
+move far away A value of zero means always recenter point if it moves off
+screen."
+  (setq scroll-conservatively 101)
+  (setq scroll-margin scrolloff))
 
 ;; Set transparency
-(defun set-transparency (value)
+(defun gilbert/set-transparency (value)
   "Setting transparency VALUE for Emacs."
   (interactive
    (list (read-number "Transparent value: ")))
   (set-frame-parameter nil 'alpha value)
   )
 
-(set-transparency 100)
+(defun gilbert/set-font ()
+  "Set gilbert's favourite fonts."
+  (cond ((eq system-type 'darwin)
+         (set-face-attribute 'variable-pitch nil :family "Iosevka Nerd Font")
+         (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
+         ;; (set-face-attribute 'default nil :family "Fira Code")
+         ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
 
-;; (when (eq system-type 'darwin)
+         ;; default font size (point * 10)
+         ;;
+         ;; WARNING!  Depending on the default font,
+         ;; if the size is not supported very well, the frame will be clipped
+         ;; so that the beginning of the buffer may not be visible correctly.
+         (set-face-attribute 'default nil :height 130)
 
-;;       ;; default Latin font (e.g. Consolas)
-;;       (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
-;;       ;; (set-face-attribute 'default nil :family "Fira Code")
-;;       ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
-
-;;       ;; default font size (point * 10)
-;;       ;;
-;;       ;; WARNING!  Depending on the default font,
-;;       ;; if the size is not supported very well, the frame will be clipped
-;;       ;; so that the beginning of the buffer may not be visible correctly.
-;;       (set-face-attribute 'default nil :height 130)
-
-;;       ;; use specific font for CJK charset.
-;;       ;; if you want to use different font size for specific charset,
-;;       ;; add :size POINT-SIZE in the font-spec.
-;;       (set-fontset-font t 'han "PingFang SC")
-
-;;       ;; you may want to add different for other charset in this way.
-;;       )
+         ;; use specific font for CJK charset.
+         ;; if you want to use different font size for specific charset,
+         ;; add :size POINT-SIZE in the font-spec.
+         (set-fontset-font t 'han "PingFang SC"))
+        ((eq system-type 'gnu/linux)
+         (set-face-attribute 'default nil :family "JetBrains Mono")
+         (set-face-attribute 'default nil :height 150)
+         (set-fontset-font t 'han "WenQuanYi Micro Hei"))
+        )
+  )
 
 
-(cond ((eq system-type 'darwin)
-       (set-face-attribute 'variable-pitch nil :family "Iosevka Nerd Font")
-       (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
-       ;; (set-face-attribute 'default nil :family "Fira Code")
-       ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
+(defun gilbert/set-config-system-utf8 ()
+  "Set encoding to utf8."
+  (set-language-environment "UTF-8")
+  (set-default-coding-systems 'utf-8)
+  (set-buffer-file-coding-system 'utf-8-unix)
+  (set-clipboard-coding-system 'utf-8-unix)
+  (set-file-name-coding-system 'utf-8-unix)
+  (set-keyboard-coding-system 'utf-8-unix)
+  (set-next-selection-coding-system 'utf-8-unix)
+  (set-selection-coding-system 'utf-8-unix)
+  (set-terminal-coding-system 'utf-8-unix)
+  (setq locale-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  )
 
-       ;; default font size (point * 10)
-       ;;
-       ;; WARNING!  Depending on the default font,
-       ;; if the size is not supported very well, the frame will be clipped
-       ;; so that the beginning of the buffer may not be visible correctly.
-       (set-face-attribute 'default nil :height 130)
+(defun gilbert/clean-temp-files ()
+  "Use no-littering to clean temp files."
+  (use-package no-littering
+    :straight t)
+  )
 
-       ;; use specific font for CJK charset.
-       ;; if you want to use different font size for specific charset,
-       ;; add :size POINT-SIZE in the font-spec.
-       (set-fontset-font t 'han "PingFang SC"))
-      ((eq system-type 'gnu/linux)
-       (set-face-attribute 'default nil :family "JetBrains Mono")
-       (set-face-attribute 'default nil :height 150)
-       (set-fontset-font t 'han "WenQuanYi Micro Hei"))
-      )
+
+(defun gilbert/set-column-indicator (column)
+  "Set column indicator for Emacs, COLUMN shoule be integer."
+  (customize-set-variable 'display-fill-column-indicator-column column)
+  (dolist (hook (list 'prog-mode-hook 'text-mode-hook))
+    (add-hook hook #'(lambda () (display-fill-column-indicator-mode)))))
+
+(defun gilbert/show-trailing-whitespace ()
+  "Show trailing spaces."
+  (dolist (hook (list 'prog-mode-hook 'text-mode-hook))
+    (add-hook hook #'(lambda () (setq-local show-trailing-whitespace t)))))
+
+
+(defun gilbert/better-defaults ()
+  "Better defaults setting for Emacs."
+
+  ;; Do not load startup screen
+  (setq inhibit-startup-screen t)
+
+  ;; Prevent insert tabs
+  (setq-default indent-tabs-mode nil)
+
+  ;; Enable hs-minor-mode for program files
+  ;; (add-hook 'prog-mode-hook #'hs-minor-mode)
+
+  ;; Make sure the tab width is 4 characters
+  (setq-default tab-width 4)
+
+  ;; Disable ring bell
+  (setq ring-bell-function 'ignore)
+
+  ;; Enable auto-revert mode
+  (add-hook 'after-init-hook 'global-auto-revert-mode)
+
+  ;; Enable display-line-numbers-mode for program files
+  (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+
+  ;; Highlight current line
+  (add-hook 'after-init-hook 'global-hl-line-mode)
+
+
+  ;; Enable file auto save
+  (setq auto-save-visited-mode t)
+
+  ;; Enable column mode
+  (column-number-mode t)
+
+  ;; Set transparency 90
+  (gilbert/set-transparency 100)
+
+  (gilbert/set-config-system-utf8)
+
+  (gilbert/vim-like-scrolloff 12)
+
+  (gilbert/set-column-indicator 100)
+
+  (gilbert/set-font)
+
+  (gilbert/set-config-system-utf8)
+
+  (gilbert/show-trailing-whitespace)
+  ;; (customize-set-variable 'tramp-save-ad-hoc-proxies t)
+
+  (gilbert/clean-temp-files)
+  )
+
+(gilbert/better-defaults)
 
 (use-package doom-modeline
   :straight t
@@ -127,43 +174,11 @@
   (global-ligature-mode 't)
   )
 
-;; Set encoding to utf8
-(set-language-environment "UTF-8")
-(set-default-coding-systems 'utf-8)
-(set-buffer-file-coding-system 'utf-8-unix)
-(set-clipboard-coding-system 'utf-8-unix)
-(set-file-name-coding-system 'utf-8-unix)
-(set-keyboard-coding-system 'utf-8-unix)
-(set-next-selection-coding-system 'utf-8-unix)
-(set-selection-coding-system 'utf-8-unix)
-(set-terminal-coding-system 'utf-8-unix)
-(setq locale-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
+(use-package iedit :straight t)
 
-;; Enable display-line-numbers-mode for program files
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(use-package recentf)
 
-;; Enable hs-minor-mode for program files
-;; (add-hook 'prog-mode-hook #'hs-minor-mode)
-
-(customize-set-variable 'display-fill-column-indicator-column 100)
-(add-hook 'prog-mode-hook (lambda () (display-fill-column-indicator-mode)))
-(add-hook 'org-mode-hook (lambda () (display-fill-column-indicator-mode)))
-
-;; Show trailing spaces
-(dolist (hook (list
-               'prog-mode-hook
-               'text-mode-hook))
-  (add-hook hook #'(lambda () (setq-local show-trailing-whitespace t))))
-
-
-(use-package recentf
-  ;; Loads after 1 second of idle time.
-  :defer 1)
-
-(use-package uniquify
-  ;; Less important than recentf.
-  :defer 2)
+(use-package uniquify)
 
 (use-package page-break-lines
   :straight t
@@ -181,9 +196,6 @@
   (electric-pair-pairs '((?\{ . ?\})))
   )
 
-;; (add-hook 'prog-mode-hook #'electric-pair-mode)
-
-(customize-set-variable 'tramp-save-ad-hoc-proxies t)
 
 (use-package hl-todo
   :straight t
@@ -201,7 +213,5 @@
         ("STUB"   . "#1E90FF")))
   )
 
-
-;; Better smooth
 (provide 'init-settings)
 ;;; init-settings.el ends here
