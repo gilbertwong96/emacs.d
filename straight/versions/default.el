@@ -66,6 +66,7 @@
  ("multi-vterm" . "36746d85870dac5aaee6b9af4aa1c3c0ef21a905")
  ("nerd-icons-completion" . "c2db8557a3c1a9588d111f8c8e91cae96ee85010")
  ("nerd-icons.el" . "fb395120e9de33b276d16caaccaefd98d4340b92")
+ ("nix-mode" . "719feb7868fb567ecfe5578f6119892c771ac5e5")
  ("no-littering" . "caf2f7f5cac25fb0053e383f3475120bc696864f")
  ("nongnu-elpa" . "97eda09376cc46686d00f3585ef54b590968ba99")
  ("orderless" . "ac4aeb66f331f4c4a430d5556071e33177304c37")
