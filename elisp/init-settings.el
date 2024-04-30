@@ -75,6 +75,8 @@ screen."
   "Use no-littering to clean temp files."
   (use-package no-littering
     :straight t)
+  ;; Disable generating annoyed backup files
+  (setq make-backup-files nil)
   )
 
 (defun gilbert/fullscreen ()
