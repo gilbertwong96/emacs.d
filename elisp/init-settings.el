@@ -32,7 +32,7 @@ screen."
 (defun gilbert/set-font ()
   "Set gilbert's favourite fonts."
   (cond ((eq system-type 'darwin)
-         (set-face-attribute 'variable-pitch nil :family "Iosevka Nerd Font")
+         (set-face-attribute 'variable-pitch nil :family "IosevkaTermSlab Nerd Font Mono")
          (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
          ;; (set-face-attribute 'default nil :family "Fira Code")
          ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
@@ -49,9 +49,9 @@ screen."
          ;; add :size POINT-SIZE in the font-spec.
          (set-fontset-font t 'han "PingFang SC"))
         ((eq system-type 'gnu/linux)
-         (set-face-attribute 'default nil :family "JetBrains Mono")
+         (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
          (set-face-attribute 'default nil :height 150)
-         (set-fontset-font t 'han "WenQuanYi Micro Hei"))
+         (set-fontset-font t 'han "Noto Sans CJK"))
         )
   )
 
@@ -77,6 +77,10 @@ screen."
     :straight t)
   )
 
+(defun gilbert/fullscreen ()
+  "Make sure Emacs init with fullscreen."
+  (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
+  )
 
 (defun gilbert/set-column-indicator (column)
   "Set column indicator for Emacs, COLUMN shoule be integer."
@@ -141,6 +145,8 @@ screen."
   ;; (customize-set-variable 'tramp-save-ad-hoc-proxies t)
 
   (gilbert/clean-temp-files)
+
+  (gilbert/fullscreen)
   )
 
 (gilbert/better-defaults)
