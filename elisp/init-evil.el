@@ -70,5 +70,10 @@
   :config
   (global-evil-surround-mode))
 
+
+(use-package navigate
+  :after evil
+  :straight (:host github :repo "keith/evil-tmux-navigator"))
+
 (provide 'init-evil)
 ;;; init-evil.el ends here
