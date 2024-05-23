@@ -18,8 +18,8 @@
 (use-package elixir-ts-mode
   :straight t
   :ensure t
-  :hook
-  (elixir-ts-mode . eglot-ensure)
+  ;; :hook
+  ;; (elixir-ts-mode . eglot-ensure)
   :if (eq system-type 'darwin)
   :ensure-system-package elixir
   :if (eq system-type 'gnu/linux)

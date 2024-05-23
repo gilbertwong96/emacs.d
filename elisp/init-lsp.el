@@ -16,6 +16,7 @@
   (c-mode . eglot-ensure)
   (erlang-mode . eglot-ensure)
   (sh-mode . eglot-ensure)
+  (elixir-ts-mode . eglot-ensure)
   ;; :config
   ;; (add-to-list 'eglot-server-programs
   ;;              '(erlang-mode . ("elp" "server")))
