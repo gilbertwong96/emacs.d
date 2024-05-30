@@ -12,10 +12,7 @@
   (yaml-mode . eglot-ensure)
   :config
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-  :if (eq system-type 'darwin)
   :ensure-system-package yaml-language-server
-  :if (eq system-type 'gnu/linux)
-  :ensure-system-package (yaml-language-server . "brew install yaml-language-server")
   )
 
 ;; Major mode for Hashicorp Configuration Language.
@@ -28,10 +25,7 @@
 
 (use-package terraform-mode
   :straight t
-  :if (eq system-type 'darwin)
   :ensure-system-package terraform-ls
-  :if (eq system-type 'gnu/linux)
-  :ensure-system-package (terraform-ls . "brew install terraform-ls")
   :custom
   (terraform-format-on-save t)
   :hook
@@ -40,10 +34,7 @@
 
 (use-package just-mode
   :straight t
-  :if (eq system-type 'darwin)
   :ensure-system-package just
-  :if (eq system-type 'gnu/linux)
-  :ensure-system-package (terraform-ls . "brew install just")
   )
 
 (use-package justl

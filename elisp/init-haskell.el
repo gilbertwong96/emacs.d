@@ -9,12 +9,7 @@
 (use-package haskell-mode
   :straight t
   :ensure t
-  :if (eq system-type 'darwin)
-  :ensure-system-package (ghc haskell-language-server)
-  :if (eq system-type 'gnu/linux)
-  :ensure-system-package
-  ((ghc . "brew install ghc")
-   (haskell-language-server . "brew install haskell-language-server"))
+  :ensure-system-package haskell
   :hook
   (haskell-mode . eglot-ensure))
 

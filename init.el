@@ -45,7 +45,7 @@
 ;; Develop Kits
 (use-package init-git)
 (use-package init-lsp)
-(use-package init-dockerfile)
+(use-package init-docker)
 (use-package init-config)
 (use-package init-elisp)
 (use-package init-shell)

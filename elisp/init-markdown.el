@@ -18,11 +18,7 @@
   (fixed-pitch ((t (:family "JetBrainsMono Nerd Font"))))
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown")
-  :if (eq system-type 'darwin)
   :ensure-system-package marksman
-  :if (eq system-type 'gnu/linux)
-  :ensure-system-package
-  (marksman . "brew install marksman")
   )
 
 (provide 'init-markdown)

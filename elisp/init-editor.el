@@ -15,6 +15,7 @@
   )
 
 (use-package flymake-vale
+  :if (eq system-type 'darwin)
   :straight (:host github :repo "tpeacock19/flymake-vale")
   :ensure t
   :ensure-system-package vale
