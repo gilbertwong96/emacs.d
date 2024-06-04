@@ -89,10 +89,13 @@
   :config
   (global-evil-surround-mode))
 
+(if (not (display-graphic-p))
+    ;; Code to run in terminal mode (optional)
+    (use-package navigate
+      :after evil
+      :straight (:host github :repo "keith/evil-tmux-navigator"))
+  )
 
-(use-package navigate
-  :after evil
-  :straight (:host github :repo "keith/evil-tmux-navigator"))
 
 (provide 'init-evil)
 ;;; init-evil.el ends here
