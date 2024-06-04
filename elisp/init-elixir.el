@@ -18,9 +18,20 @@
 (use-package elixir-ts-mode
   :straight t
   :ensure t
-  ;; :hook
-  ;; (elixir-ts-mode . eglot-ensure)
   :ensure-system-package elixir
+  )
+
+(use-package mix
+  :straight t
+  :ensure t
+  :hook
+  (elixir-ts-mode . mix-minor-mode)
+  :init
+  (local-leader-def
+    :keymaps 'mix-minor-mode-map
+    "m"  '(:ignore t :which-key "mix")
+    "mt" '(mix-execute-task :which-key "Execute Task")
+    )
   )
 
 (provide 'init-elixir)
