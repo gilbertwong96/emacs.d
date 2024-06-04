@@ -33,7 +33,7 @@
   :after general
   :config
   (leader-def
-    "'" 'imenu-list-smart-toggle)
+    "'" '(imenu-list-smart-toggle :which-key "Toggle Imenu List"))
   )
 
 (provide 'init-assistent)

@@ -12,11 +12,12 @@
   :defer t
   :init
   (leader-def
-    "tt" 'treemacs
-    "td" 'treemacs-select-directory
-    "ts" 'treemacs-switch-workspace
-    "te" 'treemacs-edit-workspaces
-    "tc" 'treemacs-create-workspace)
+    "t"   '(:ignore t :which-key "treemacs")
+    "tt" '(treemacs :which-key "Toggle Treemacs")
+    "td" '(treemacs-select-directory :which-key "Select Directory")
+    "ts" '(treemacs-switch-workspace :which-key "Switch WorkSpace")
+    "te" '(treemacs-edit-workspaces :which-key "Edit WorkSpace")
+    "tc" '(treemacs-create-workspace :which-key "Create WorkSpace"))
   :config
   (progn
     (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
