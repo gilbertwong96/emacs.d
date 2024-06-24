@@ -19,4 +19,5 @@ eln-cache/
 tramp
 bookmarks
 org-roam.db
+.DS_Store
 *~

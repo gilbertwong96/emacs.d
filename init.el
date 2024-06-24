@@ -60,6 +60,8 @@
 ;; Knowledge Management System
 (use-package init-org)
 
+(use-package init-web)
+
 ;; Enhance editor
 (use-package init-editor)
 
