@@ -31,9 +31,10 @@ screen."
 
 (defun gilbert/set-font ()
   "Set gilbert's favourite fonts."
+
+  (set-face-attribute 'default nil :height 130)
+  (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
   (cond ((eq system-type 'darwin)
-         (set-face-attribute 'variable-pitch nil :family "IosevkaTermSlab Nerd Font Mono")
-         (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
          ;; (set-face-attribute 'default nil :family "Fira Code")
          ;; (set-face-attribute 'default nil :family "ComicShannsMono Nerd Font Mono")
 
@@ -42,15 +43,13 @@ screen."
          ;; WARNING!  Depending on the default font,
          ;; if the size is not supported very well, the frame will be clipped
          ;; so that the beginning of the buffer may not be visible correctly.
-         (set-face-attribute 'default nil :height 130)
 
          ;; use specific font for CJK charset.
          ;; if you want to use different font size for specific charset,
          ;; add :size POINT-SIZE in the font-spec.
          (set-fontset-font t 'han "PingFang SC"))
         ((eq system-type 'gnu/linux)
-         (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono")
-         (set-face-attribute 'default nil :height 150)
+         (set-face-attribute 'variable-pitch nil :family "IosevkaTermSlab Nerd Font Mono")
          (set-fontset-font t 'han "Noto Sans CJK"))
         )
   )
