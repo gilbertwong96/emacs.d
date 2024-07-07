@@ -10,11 +10,18 @@
 
 (use-package js2-mode
   :straight t
+  :mode
+  ("\\.js\\'" . js-ts-mode)
+  ("\\.json\\'" . json-ts-mode)
+  ("\\.ts\\'" . typescript-ts-mode)
   :config
   ;; Make js2-mode as major mode for JavaScript editing
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-minor-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
+  ;; Make typescript-server-mode as major mode for JavaScript editing
+  ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . typescript-ts-mode))
   ;; Hook it in for shell scripts running via node.js
-  (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+  (add-to-list 'interpreter-mode-alist '("node" . js-ts-mode))
   )
 
 (use-package skewer-mode
@@ -30,18 +37,6 @@
   :after js2-mode
   :hook
   (js2-mode . js2-refactor-mode))
-
-(use-package tide
-  :straight t
-  :after (flycheck js2-mode)
-  :hook
-  ((typescript-ts-mode . tide-setup)
-   (tsx-ts-mode . tide-setup)
-   (js2-minor-mode . tide-setup)
-   (typescript-ts-mode . tide-hl-identifier-mode)
-   (before-save . tide-format-before-save)
-   )
-  )
 
 (provide 'init-web)
 ;;; init-web.el ends here
