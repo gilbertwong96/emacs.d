@@ -26,6 +26,7 @@
   :ensure t
   :hook
   (elixir-ts-mode . mix-minor-mode)
+  (heex-ts-mode . display-line-numbers-mode)
   :init
   (local-leader-def
     :keymaps 'mix-minor-mode-map

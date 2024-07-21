@@ -167,7 +167,7 @@ screen."
   (ligature-set-ligatures 't '("www"))
 
   ;; Enable ligatures in programming modes
-  (ligature-set-ligatures '(erlang-mode elixir-ts-mode)
+  (ligature-set-ligatures '(erlang-mode elixir-ts-mode heex-ts-mode)
                           '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
                             ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
                             "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"

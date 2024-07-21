@@ -38,5 +38,18 @@
   :hook
   (js2-mode . js2-refactor-mode))
 
+(use-package po-mode
+  :straight t
+  :mode
+  ("\\.pot?\\'" . po-mode))
+
+(use-package emmet-mode
+  :straight t
+  :ensure t
+  :hook
+  (web-mode . emmet-mode)
+  (heex-ts-mode . emmet-mode)
+  )
+
 (provide 'init-web)
 ;;; init-web.el ends here
