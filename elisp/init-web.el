@@ -8,12 +8,19 @@
 
 (use-package flycheck :straight t)
 
+(use-package nginx-mode
+  :straight t
+  :commands nginx-mode
+  )
+
 (use-package js2-mode
   :straight t
   :mode
   ("\\.js\\'" . js-ts-mode)
   ("\\.json\\'" . json-ts-mode)
   ("\\.ts\\'" . typescript-ts-mode)
+  :hook
+  (json-ts-mode . hs-minor-mode)
   :config
   ;; Make js2-mode as major mode for JavaScript editing
   ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
