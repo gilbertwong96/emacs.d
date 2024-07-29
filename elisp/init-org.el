@@ -11,12 +11,33 @@
   :defer t
   :ensure t)
 
+(use-package mermaid-mode
+  :straight t
+  :ensure t
+  :after org
+  :custom
+  (mermaid-mmdc-location (executable-find "mmdc"))
+  )
+
+(use-package ob-mermaid
+  :straight t
+  :after (org mermaid-mode)
+  :config
+  (setq ob-mermaid-cli-path (executable-find "mmdc"))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((mermaid . t)
+     (scheme . t)
+     (emacs-lisp . t)))
+  )
+
 (use-package org
   :straight t
-  :defer t
-  :after consult
   :ensure t
-  ;; (org-todo-keywords '((sequence "TODO" "DOING" "DONE")))
+  :custom
+  (org-todo-keywords '((sequence "TODO" "DOING" "DONE")))
+  ;; (org-todo-keywords
+  ;;  '((sequence "TODO(t)" "IN-PROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")))
   :hook
   (org-mode . corfu-mode)
   :config
@@ -272,11 +293,11 @@ Only take effect when the capture was not aborted."
 
 (use-package org-modern
   :straight t
+  :after org
   :hook
   (org-mode . org-modern-mode)
   (org-agenda-finalize . org-modern-agenda)
   )
-
 
 
 (provide 'init-org)
