@@ -23,11 +23,12 @@
   ;; make evil-search-word look for symbol rather than word boundaries
   (setq-default evil-symbol-word-search t)
   (leader-def
-    "b"  '(:ignore t :which-key "buffers")
+    "b"  '(:ignore t          :which-key "buffers")
     "bd" '(evil-delete-buffer :which-key "Delete Buffer")
-    "T"  '(:ignore T :which-key "tabs")
-    "Tn" '(tab-new   :which-key "New Tab")
-    "Td" '(tab-close :which-key "Close Tab")
+    "T"  '(:ignore T          :which-key "tabs")
+    "Tn" '(tab-new            :which-key "New Tab")
+    "Td" '(tab-close          :which-key "Close Tab")
+    "Tr" '(tab-rename         :which-key "Rename Tab")
     )
   (cond ((eq system-type 'darwin)
          (bind-keys :package evil :map evil-motion-state-map
