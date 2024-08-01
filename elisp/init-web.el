@@ -10,8 +10,16 @@
 
 (use-package nginx-mode
   :straight t
-  :commands nginx-mode
-  )
+  :commands nginx-mode)
+
+(use-package rainbow-mode
+  :straight t
+  :mode
+  ("\\.css\\'" . css-ts-mode)
+  :hook
+  (css-ts-mode . rainbow-mode)
+  (js-ts-mode . rainbow-mode)
+  (typescript-ts-mode . rainbow-mode))
 
 (use-package js2-mode
   :straight t
