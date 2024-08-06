@@ -10,13 +10,16 @@
   :straight t
   :ensure t
   :defer t
+  :ensure-system-package git
+  :config
+  (transient-append-suffix 'magit-push "-n"
+    '("-s" "Skip CI" "-o ci.skip"))
   :init
   (leader-def
     "gs" 'magit-status
     "gb" 'magit-blame-addition
     "gc" 'magit-clone
     )
-  :ensure-system-package git
   )
 
 (use-package git-gutter

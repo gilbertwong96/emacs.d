@@ -30,11 +30,6 @@
   :hook
   (json-ts-mode . hs-minor-mode)
   :config
-  ;; Make js2-mode as major mode for JavaScript editing
-  ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
-  ;; Make typescript-server-mode as major mode for JavaScript editing
-  ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . typescript-ts-mode))
   ;; Hook it in for shell scripts running via node.js
   (add-to-list 'interpreter-mode-alist '("node" . js-ts-mode))
   )
