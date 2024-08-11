@@ -13,7 +13,6 @@
   ;; To disable collection of benchmark data after init is done.
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
-
 (use-package straight
   :custom
   (straight-use-package-by-default nil)
@@ -55,7 +54,7 @@
 (use-package init-markdown)
 (use-package init-rust)
 (use-package init-elixir)
-(use-package init-treesitter)
+(use-package init-treesit)
 
 ;; Knowledge Management System
 (use-package init-org)

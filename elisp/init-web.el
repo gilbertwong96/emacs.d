@@ -27,8 +27,6 @@
   ("\\.js\\'" . js-ts-mode)
   ("\\.json\\'" . json-ts-mode)
   ("\\.ts\\'" . typescript-ts-mode)
-  :hook
-  (json-ts-mode . hs-minor-mode)
   :config
   ;; Hook it in for shell scripts running via node.js
   (add-to-list 'interpreter-mode-alist '("node" . js-ts-mode))
