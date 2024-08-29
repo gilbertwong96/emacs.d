@@ -56,14 +56,14 @@
   (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer))
 
 (use-package corfu-terminal
-  :straight (:type git :repo "https://codeberg.org/akib/emacs-corfu-terminal.git")
+  :straight (:type git :host codeberg :repo "akib/emacs-corfu-terminal")
   :config
   (unless (display-graphic-p)
     (corfu-terminal-mode +1)))
 
 
 (use-package corfu-doc-terminal
-  :straight (:type git :repo "https://codeberg.org/akib/emacs-corfu-doc-terminal.git")
+  :straight (:type git :host codeberg :repo "akib/emacs-corfu-doc-terminal")
   :config
   (unless (display-graphic-p)
     (corfu-doc-terminal-mode +1)))
