@@ -41,6 +41,10 @@
   :straight t
   :defer t)
 
+(use-package nix-mode
+  :straight t
+  :mode "\\.nix\\'")
+
 
 (provide 'init-config)
 ;;; init-config.el ends here

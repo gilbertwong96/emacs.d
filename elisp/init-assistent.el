@@ -28,7 +28,8 @@
   )
 
 (use-package gptel
-  :straight t)
+  :straight t
+  :defer t)
 
 (use-package imenu-list
   :straight t

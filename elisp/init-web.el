@@ -10,10 +10,12 @@
 
 (use-package nginx-mode
   :straight t
+  :defer t
   :commands nginx-mode)
 
 (use-package rainbow-mode
   :straight t
+  :defer t
   :mode
   ("\\.css\\'" . css-ts-mode)
   :hook
@@ -23,6 +25,7 @@
 
 (use-package js2-mode
   :straight t
+  :defer t
   :mode
   ("\\.js\\'" . js-ts-mode)
   ("\\.json\\'" . json-ts-mode)
@@ -35,6 +38,7 @@
 (use-package skewer-mode
   :straight t
   :after js2-mode
+  :defer t
   :hook
   (js2-mode  . skewer-mode)
   (css-mode  . skewer-css-mode)
@@ -43,17 +47,19 @@
 (use-package js2-refactor
   :straight t
   :after js2-mode
+  :defer t
   :hook
   (js2-mode . js2-refactor-mode))
 
 (use-package po-mode
   :straight t
+  :defer t
   :mode
   ("\\.pot?\\'" . po-mode))
 
 (use-package emmet-mode
   :straight t
-  :ensure t
+  :defer t
   :hook
   (web-mode . emmet-mode)
   (heex-ts-mode . emmet-mode)

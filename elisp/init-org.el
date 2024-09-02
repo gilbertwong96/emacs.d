@@ -8,12 +8,10 @@
 
 (use-package simple-httpd
   :straight t
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package mermaid-mode
   :straight t
-  :ensure t
   :after org
   :custom
   (mermaid-mmdc-location (executable-find "mmdc"))
@@ -32,6 +30,7 @@
   )
 
 (use-package verb
+  :after org
   :straight t)
 
 (use-package org

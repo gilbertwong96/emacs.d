@@ -8,7 +8,6 @@
 
 (use-package multi-vterm
   :straight t
-  :ensure t
   :defer t
   :config
   (setq multi-vterm-dedicated-window-height 50)
