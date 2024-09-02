@@ -64,9 +64,8 @@
 ;; Enhance editor
 (use-package init-editor)
 
-(use-package nix-mode
-  :straight t
-  :mode "\\.nix\\'")
+;; Reading
+(use-package init-reading)
 
 (provide 'init)
 ;;; init.el ends here
