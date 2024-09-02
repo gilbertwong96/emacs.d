@@ -27,6 +27,9 @@
     "M-RET" 'copilot-accept-completion)
   )
 
+(use-package gptel
+  :straight t)
+
 (use-package imenu-list
   :straight t
   :ensure t
