@@ -31,6 +31,9 @@
      (emacs-lisp . t)))
   )
 
+(use-package verb
+  :straight t)
+
 (use-package org
   :straight t
   :ensure t
@@ -41,6 +44,7 @@
   :hook
   (org-mode . corfu-mode)
   :config
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   (setq org-latex-create-formula-image-program 'dvisvgm)
   (plist-put org-format-latex-options :scale 1.5)
   :init
