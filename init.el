@@ -67,5 +67,13 @@
 ;; Reading
 (use-package init-reading)
 
+;; Telega
+(use-package telega
+  :if (eq system-type 'darwin)
+  :straight t
+  :custom
+  (telega-server-libs-prefix "/opt/homebrew/Cellar/tdlib/HEAD-9b6ff58")
+  )
+
 (provide 'init)
 ;;; init.el ends here
