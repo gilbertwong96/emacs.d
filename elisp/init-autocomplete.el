@@ -57,6 +57,7 @@
 
 (use-package corfu-terminal
   :straight (:type git :host codeberg :repo "akib/emacs-corfu-terminal")
+  :defer t
   :config
   (unless (display-graphic-p)
     (corfu-terminal-mode +1)))
@@ -64,6 +65,7 @@
 
 (use-package corfu-doc-terminal
   :straight (:type git :host codeberg :repo "akib/emacs-corfu-doc-terminal")
+  :defer t
   :config
   (unless (display-graphic-p)
     (corfu-doc-terminal-mode +1)))

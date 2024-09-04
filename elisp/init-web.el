@@ -6,7 +6,7 @@
 
 ;;; Code:
 
-(use-package flycheck :straight t)
+(use-package flycheck :straight t :defer t)
 
 (use-package nginx-mode
   :straight t

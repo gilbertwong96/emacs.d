@@ -6,6 +6,7 @@
 
 ;;; Code:
 
+(setq package-native-compile t)
 (setq package-enable-at-startup nil)
 
 ;; Adjust garbage collection thresholds during startup, and thereafter

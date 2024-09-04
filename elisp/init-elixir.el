@@ -18,12 +18,14 @@
 (use-package elixir-ts-mode
   :straight t
   :ensure t
+  :defer t
   :ensure-system-package elixir
   )
 
 (use-package mix
   :straight t
   :ensure t
+  :defer t
   :hook
   (elixir-ts-mode . mix-minor-mode)
   (heex-ts-mode . display-line-numbers-mode)

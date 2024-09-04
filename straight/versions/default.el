@@ -66,6 +66,7 @@
  ("just-mode.el" . "4c0df4cc4b8798f1a7e99fb78b79c4bf7eec12c1")
  ("justl.el" . "9bf1fc645682b8dcb638d448cd2e804960ee625f")
  ("kind-icon" . "5697e40333f7c94fd24649eed9970ea37f1d9a50")
+ ("language-detection.el" . "54a6ecf55304fba7d215ef38a4ec96daff2f35a4")
  ("let-alist" . "4e05e158612f360f6080b1349d3962b1c8fee902")
  ("ligature.el" . "6ac1634612dbd42f7eb81ecaf022bd239aabb954")
  ("magit" . "fe427e64382db783d33cf1cfd46fe851dc3c8113")

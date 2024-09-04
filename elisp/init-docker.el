@@ -6,7 +6,7 @@
 
 ;;; Code:
 
-(use-package dockerfile-mode :straight t)
+(use-package dockerfile-mode :straight t :defer t)
 
 (provide 'init-docker)
 ;;; init-docker.el ends here

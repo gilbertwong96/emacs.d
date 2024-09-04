@@ -9,6 +9,7 @@
 (use-package editorconfig
   :straight t
   :ensure t
+  :defer t
   :config
   (editorconfig-mode 1)
   :ensure-system-package editorconfig

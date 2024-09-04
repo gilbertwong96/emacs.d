@@ -9,6 +9,7 @@
 (use-package treesit-auto
   :straight t
   :ensure t
+  :defer t
   :custom
   (treesit-auto-install 'prompt)
   :config

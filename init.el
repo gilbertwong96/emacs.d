@@ -27,9 +27,6 @@
 ;; Place user settings to elisp dir
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
-;; Patch for emacs lisp
-(use-package el-patch :defer t)
-
 ;; Basic setting for editor
 (use-package init-theme)
 (use-package init-settings)
@@ -67,13 +64,8 @@
 ;; Reading
 (use-package init-reading)
 
-;; Telega
-(use-package telega
-  :if (eq system-type 'darwin)
-  :straight t
-  :custom
-  (telega-server-libs-prefix "/opt/homebrew/Cellar/tdlib/HEAD-9b6ff58")
-  )
+;; Telegram
+(use-package init-telegram)
 
 (provide 'init)
 ;;; init.el ends here
