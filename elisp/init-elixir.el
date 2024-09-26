@@ -1,19 +1,11 @@
-
-;;; init-elixir.el -*- lexical-binding: t; -*-
+;;; Package --- init-elixir.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
-;; Gilbert's Emacs Configuration
+;; Enhance Elixir Developing
 
 ;;; Code:
 
-;; (use-package elixir-mode
-;;   :straight t
-;;   :ensure t
-;;   :defer t
-;;   :hook
-;;   (elixir-mode . eglot-ensure)
-;;   )
 
 (use-package elixir-ts-mode
   :straight t

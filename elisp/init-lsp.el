@@ -17,6 +17,7 @@
   (erlang-mode . eglot-ensure)
   (sh-mode . eglot-ensure)
   (elixir-ts-mode . eglot-ensure)
+  (python-ts-mode . eglot-ensure)
   (typescript-ts-mode . eglot-ensure)
   (js-ts-mode . eglot-ensure)
   ;; :config

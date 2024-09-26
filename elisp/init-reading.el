@@ -17,6 +17,7 @@
 (use-package nov
   :straight t
   :mode ("\\.epub\\'" . nov-mode)
+  :defer t
   :config
   (setq nov-unzip-program (executable-find "bsdtar"))
   (setq nov-unzip-args '("-xC" directory "-f" filename)))

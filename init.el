@@ -49,6 +49,7 @@
 (use-package init-haskell)
 (use-package init-golang)
 (use-package init-markdown)
+(use-package init-python)
 (use-package init-rust)
 (use-package init-elixir)
 (use-package init-treesit)

@@ -9,9 +9,11 @@
 (use-package treesit-auto
   :straight t
   :ensure t
-  :defer t
   :custom
   (treesit-auto-install 'prompt)
+  :init
+  (setq major-mode-remap-alist
+      '((python-mode . python-ts-mode)))
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
