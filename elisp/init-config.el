@@ -45,6 +45,11 @@
   :straight t
   :mode "\\.nix\\'")
 
+(use-package direnv
+  :straight t
+  :config
+  (direnv-mode))
+
 
 (provide 'init-config)
 ;;; init-config.el ends here
