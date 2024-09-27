@@ -65,10 +65,9 @@
   :ensure t
   :custom
   (global-evil-collection-unimpaired-mode t)
-  :hook
-  (evil-mode . evil-collection-setup)
+  :init
+  (evil-collection-init)
   :config
-  ;; (evil-collection-init)
   (defun ignore-dired-space ()
     (evil-collection-define-key 'normal 'dired-mode-map
       " " 'nil)

@@ -15,6 +15,7 @@
   )
 
 (use-package conda
+  :if (eq system-type 'darwin)
   :straight t
   :ensure t
   :defer t
