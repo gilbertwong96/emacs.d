@@ -57,6 +57,9 @@
 ;; Knowledge Management System
 (use-package init-org)
 
+;; Development for Apple Platform
+(use-package init-apple)
+
 (use-package init-web)
 
 ;; Enhance editor
