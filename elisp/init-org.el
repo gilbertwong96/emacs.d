@@ -45,7 +45,7 @@
   :config
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   (setq org-latex-create-formula-image-program 'dvisvgm)
-  (plist-put org-format-latex-options :scale 1.5)
+  (plist-put org-format-latex-options :scale 2.0)
   :init
   (leader-def
     "o"  '(:ignore t :which-key "org")
