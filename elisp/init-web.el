@@ -62,8 +62,11 @@
   :defer t
   :hook
   (web-mode . emmet-mode)
-  (heex-ts-mode . emmet-mode)
-  )
+  (heex-ts-mode . emmet-mode))
+
+(use-package request :straight t)
+
+(use-package graphql-mode :straight t)
 
 (provide 'init-web)
 ;;; init-web.el ends here
