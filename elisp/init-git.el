@@ -22,6 +22,10 @@
     )
   )
 
+(use-package magit-lfs
+  :straight t
+  :ensure t)
+
 (use-package git-gutter
   :straight t
   :ensure t
@@ -37,7 +41,6 @@
 
 (use-package magit-todos
   :straight t
-  :defer t
   :ensure t)
 
 (provide 'init-git)

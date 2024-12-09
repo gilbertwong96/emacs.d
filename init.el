@@ -21,7 +21,8 @@
 ;; (use-package use-package :straight t)
 
 (use-package use-package-ensure-system-package
-  :straight t
+  :if (eq system-type 'darwin)
+  :straight (:host github :repo "waymondo/use-package-ensure-system-package")
   :ensure t)
 
 ;; Place user settings to elisp dir
@@ -35,7 +36,7 @@
 (use-package init-autocomplete)
 (use-package init-vertico)
 (use-package init-evil)
-(use-package init-assistent)
+(use-package init-llm)
 (use-package init-terminal)
 
 ;; Develop Kits
@@ -59,7 +60,6 @@
 
 ;; Development for Apple Platform
 (use-package init-apple)
-
 (use-package init-web)
 
 ;; Enhance editor
@@ -68,8 +68,6 @@
 ;; Reading
 (use-package init-reading)
 
-;; Telegram
-(use-package init-telegram)
 
 (provide 'init)
 ;;; init.el ends here

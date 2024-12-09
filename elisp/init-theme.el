@@ -21,7 +21,7 @@
 
   :config
   ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+  (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   (load-theme 'doom-monokai-classic t)
   ;; (load-theme 'doom-gruvbox-light t)
@@ -33,6 +33,20 @@
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
+(use-package tab-bar
+  :custom
+  ;; Hide tab bar if only one tab exists
+  (tab-bar-show 1)
+  ;; Hide the tab close/X button
+  (tab-bar-close-button-show nil)
+  ;; Hide the "+" button
+  (tab-bar-new-button-show t)
+  ;; Show tab numbers
+  (tab-bar-tab-hints t)
+  ;; Configure tab bar format
+  (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+  )
 
 (provide 'init-theme)
 ;;; init-theme.el ends here

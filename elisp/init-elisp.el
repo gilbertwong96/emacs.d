@@ -26,5 +26,7 @@
     "K" 'elisp-slime-nav-describe-elisp-thing-at-point)
   )
 
+(customize-set-variable 'emacs-lisp-docstring-fill-column 100)
+
 (provide 'init-elisp)
 ;;; init-elisp.el ends here
