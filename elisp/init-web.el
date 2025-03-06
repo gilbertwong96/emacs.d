@@ -64,6 +64,8 @@
   (web-mode . emmet-mode)
   (heex-ts-mode . emmet-mode))
 
+(use-package vue-mode :straight t)
+
 (use-package request :straight t)
 
 (use-package graphql-mode :straight t)

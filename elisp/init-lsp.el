@@ -6,6 +6,22 @@
 
 ;;; Code:
 
+;; Function to get TypeScript SDK path for Volar
+(defun vue-eglot-init-options ()
+  (let ((tsdk-path (expand-file-name "lib"
+                   (string-trim-right
+                    (shell-command-to-string "npm list --global --parseable typescript | head -n1")))))
+    `(:typescript (:tsdk ,tsdk-path
+                  :languageFeatures (:completion (:defaultTagNameCase "both"
+                                                :defaultAttrNameCase "kebabCase"
+                                                :getDocumentNameCasesRequest nil
+                                                :getDocumentSelectionRequest nil)
+                                   :diagnostics (:getDocumentVersionRequest nil))
+                  :documentFeatures (:documentFormatting (:defaultPrintWidth 100
+                                                        :getDocumentPrintWidthRequest nil)
+                                   :documentSymbol t
+                                   :documentColor t)))))
+
 (use-package eglot
   :straight t
   :ensure t
@@ -20,9 +36,11 @@
   (python-ts-mode . eglot-ensure)
   (typescript-ts-mode . eglot-ensure)
   (js-ts-mode . eglot-ensure)
-  ;; :config
-  ;; (add-to-list 'eglot-server-programs
-  ;;              '(erlang-mode . ("elp" "server")))
+  (vue-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+               `(vue-mode . ("vue-language-server" "--stdio"
+                             :initializationOptions ,(vue-eglot-init-options))))
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (local-leader-def
@@ -33,8 +51,7 @@
   (leader-def
     :keymaps 'eglot-mode-map
     "l"  '(:ignore t :which-key "lsp")
-    "lr" '(eglot-reconnect :which-key "Reconnect"))
-  )
+    "lr" '(eglot-reconnect :which-key "Reconnect")))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
