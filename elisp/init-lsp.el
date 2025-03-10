@@ -47,6 +47,7 @@
     :keymaps 'eglot-mode-map
     "l"  '(:ignore t :which-key "lsp")
     "lr" '(eglot-rename :which-key "Rename")
+    "la" '(eglot-code-actions :which-key "Code Actions")
     )
   (leader-def
     :keymaps 'eglot-mode-map
