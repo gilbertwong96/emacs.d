@@ -221,5 +221,6 @@ screen."
         ("STUB"   . "#1E90FF")))
   )
 
+
 (provide 'init-settings)
 ;;; init-settings.el ends here

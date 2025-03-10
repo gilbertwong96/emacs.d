@@ -31,15 +31,23 @@
   :straight t
   :defer t
   :custom
-  (gptel-model 'qwq:latest)
-  (gptel-backend (gptel-make-ollama "Ollama"             ;Any name of your choosing
-                   :host "localhost:11434"               ;Where it's running
-                   :stream t                             ;Stream responses
-                   :models '(qwq:latest
-                             ;; mistral:latest
-                             ))            ;List of models
-                 )
-  )
+  (gptel-model 'deepseek-reasoner)
+  (gptel-backend
+   ;; VolcEngine DeepSeek offers an OpenAI compatible API
+  (gptel-make-openai "DeepSeek"       ;Any name you want
+    :host "ark.cn-beijing.volces.com/api/v3/chat/completions"
+    ;; :host "api.deepseek.com"
+    :endpoint "/chat/completions"
+    :stream t
+    :key (lambda () (string-trim
+                (shell-command-to-string "op read op://Personal/deepseek-volce-api-key/password")))
+    :models '(deepseek-reasoner deepseek-chat))
+   ;; (gptel-make-ollama "Ollama"          ;Any name of your choosing
+   ;;   :host "localhost:11434"            ;Where it's running
+   ;;   :stream t                          ;Stream responses
+   ;;   :models '(qwq:latest
+   ;;             )))
+   ))
 
 (use-package smerge-mode
   :straight t
@@ -80,14 +88,6 @@
   :init
   (require 'llm-ollama))
 
-(use-package imenu-list
-  :straight t
-  :ensure t
-  :after general
-  :config
-  (leader-def
-    "'" '(imenu-list-smart-toggle :which-key "Toggle Imenu List"))
-  )
 
 (provide 'init-llm)
 ;;; init-llm.el ends here.

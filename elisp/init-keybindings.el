@@ -72,5 +72,15 @@
     )
  )
 
+;; Enhance Imenu
+(use-package imenu-list
+  :straight t
+  :ensure t
+  :after general
+  :config
+  (leader-def
+    "'" '(imenu-list-smart-toggle :which-key "Toggle Imenu List"))
+  )
+
 (provide 'init-keybindings)
 ;;; init-keybindings.el ends here
