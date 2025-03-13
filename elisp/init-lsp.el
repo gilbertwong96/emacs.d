@@ -38,9 +38,10 @@
   (js-ts-mode . eglot-ensure)
   (vue-mode . eglot-ensure)
   :config
-  (add-to-list 'eglot-server-programs
-               `(vue-mode . ("vue-language-server" "--stdio"
-                             :initializationOptions ,(vue-eglot-init-options))))
+  (dolist (server `((vue-mode . ("vue-language-server" "--stdio"
+                                 :initializationOptions ,(vue-eglot-init-options)))
+                    (sql-mode . ("sqls"))))
+    (add-to-list 'eglot-server-programs server))
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (local-leader-def

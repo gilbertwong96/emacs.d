@@ -54,6 +54,7 @@
 (use-package init-rust)
 (use-package init-elixir)
 (use-package init-treesit)
+(use-package init-db)
 
 ;; Knowledge Management System
 (use-package init-org)
