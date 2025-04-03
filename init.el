@@ -69,6 +69,7 @@
 ;; Reading
 (use-package init-reading)
 
+(use-package yaml :straight t)
 
 (provide 'init)
 ;;; init.el ends here

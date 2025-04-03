@@ -29,13 +29,11 @@
   :custom
   (terraform-format-on-save t)
   :hook
-  (terraform-mode . eglot-ensure)
-  )
+  (terraform-mode . eglot-ensure))
 
 (use-package just-mode
   :straight t
-  :ensure-system-package just
-  )
+  :ensure-system-package just)
 
 (use-package justl
   :straight t

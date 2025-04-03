@@ -6,10 +6,8 @@
 
 (use-package go-mode
   :straight t
-  :ensure-system-package golang
   :hook
-  (go-mode . eglot-ensure)
-  )
+  (go-mode . eglot-ensure))
 
 ;;; Code:
 (provide 'init-golang)

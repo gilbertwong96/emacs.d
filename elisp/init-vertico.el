@@ -144,8 +144,11 @@
   ;; The :init configuration is always executed (Not lazy)
   :init
   (leader-def
-    "cm" 'consult-mode-command
+    "ce" 'consult-compile-error
+    "cf" 'consult-flymake
+    "cg" 'consult-goto-line
     "ck" 'consult-kmacro
+    "cm" 'consult-mode-command
     "cy" 'consult-yank-pop
     "co" 'consult-outline
     "cl" 'consult-line
@@ -155,28 +158,7 @@
     "gg" 'consult-git-grep
     "/"  '(consult-ripgrep :which-key "RipGrep")
     "mi" 'consult-imenu
-    "mI" 'consult-imenu-multi
-    )
-  (local-leader-def
-    "ce" 'consult-compile-error
-    "cf" 'consult-flymake
-    "cg" 'consult-goto-line
-    "cG" 'consult-goto-line
-    "cm" 'consult-mark
-    "cM" 'consult-global-mark
-
-    "c4" 'consult-buffer-other-window
-    "c5" 'consult-buffer-other-frame
-         ;; M-s bindings in `search-map'
-         ;; ("M-s D" . consult-locate)
-         ;; ("M-s k" . consult-keep-lines)
-         ;; ("M-s u" . consult-focus-lines)
-         ;; Isearch integration
-         ;; ("M-s e" . consult-isearch-history)
-         ;; :map isearch-mode-map
-         ;; ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-         ;; ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-    )
+    "mI" 'consult-imenu-multi)
 
   ;; Optionally configure the register formatting. This improves the register
   ;; preview for `consult-register', `consult-register-load',

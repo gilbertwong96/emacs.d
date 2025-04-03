@@ -1,4 +1,4 @@
-;;; init-terminal.el -*- lexical-binding: t; -*-
+;;; Package --- init-terminal.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
