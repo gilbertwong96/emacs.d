@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 
-;; Gilbert's Emacs Configuration
+;; Enhance Erlang developing
 
 ;;; Code:
 

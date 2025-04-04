@@ -37,6 +37,7 @@
   (typescript-ts-mode . eglot-ensure)
   (js-ts-mode . eglot-ensure)
   (vue-mode . eglot-ensure)
+  (dart-mode . eglot-ensure)
   :config
   (dolist (server `((vue-mode . ("vue-language-server" "--stdio"
                                  :initializationOptions ,(vue-eglot-init-options)))
@@ -48,8 +49,7 @@
     :keymaps 'eglot-mode-map
     "l"  '(:ignore t :which-key "lsp")
     "lr" '(eglot-rename :which-key "Rename")
-    "la" '(eglot-code-actions :which-key "Code Actions")
-    )
+    "la" '(eglot-code-actions :which-key "Code Actions"))
   (leader-def
     :keymaps 'eglot-mode-map
     "l"  '(:ignore t :which-key "lsp")

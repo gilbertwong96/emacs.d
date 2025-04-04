@@ -55,6 +55,7 @@
 (use-package init-elixir)
 (use-package init-treesit)
 (use-package init-db)
+(use-package init-flutter)
 
 ;; Knowledge Management System
 (use-package init-org)
