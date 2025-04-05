@@ -41,7 +41,9 @@
 
 (use-package magit-todos
   :straight t
-  :ensure t)
+  :after magit
+  :config
+  (magit-todos-mode 1))
 
 (provide 'init-git)
 ;;; init-git.el ends here

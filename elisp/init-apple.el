@@ -14,7 +14,6 @@
   :interpreter "swift"
   :init
   (local-leader-def
-    :keymaps 'mix-minor-mode-map
     "x"  '(:ignore t :which-key "XCode")
     "xo" '(open-in-xcode :which-key "Open In XCode")
     "xb" '(xcode-build :which-key "Open In XCode")

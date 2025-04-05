@@ -221,6 +221,12 @@ screen."
         ("STUB"   . "#1E90FF")))
   )
 
+;; Rainbow delimiters makes nested delimiters easier to understand
+(use-package rainbow-delimiters
+  :straight t
+  :ensure t
+  :hook ((prog-mode . rainbow-delimiters-mode)))
+
 
 (provide 'init-settings)
 ;;; init-settings.el ends here

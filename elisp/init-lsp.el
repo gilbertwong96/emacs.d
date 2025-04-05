@@ -8,6 +8,7 @@
 
 ;; Function to get TypeScript SDK path for Volar
 (defun vue-eglot-init-options ()
+  "Set eglot program server for vue js."
   (let ((tsdk-path (expand-file-name "lib"
                    (string-trim-right
                     (shell-command-to-string "npm list --global --parseable typescript | head -n1")))))
@@ -41,7 +42,8 @@
   :config
   (dolist (server `((vue-mode . ("vue-language-server" "--stdio"
                                  :initializationOptions ,(vue-eglot-init-options)))
-                    (sql-mode . ("sqls"))))
+                    (sql-mode . ("sqls"))
+                    (swift-mode . ("sourcekit-lsp"))))
     (add-to-list 'eglot-server-programs server))
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)

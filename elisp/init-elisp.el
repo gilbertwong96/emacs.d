@@ -31,8 +31,7 @@
                      (if (eq major-mode 'eask-mode)
                          nil ;; Disable this keymap in eask-mode
                        kmap))
-    "K" 'elisp-slime-nav-describe-elisp-thing-at-point)
-  )
+    "K" 'elisp-slime-nav-describe-elisp-thing-at-point))
 
 (use-package flymake-elsa
   :straight (flymake-elsa :type git :host github :repo "flymake/flymake-elsa")
@@ -59,11 +58,9 @@
     :keymaps 'eask-mode-map
     "K" 'eldoc))
 
-(use-package easky
-  :straight (easky :type git :host github :repo "emacs-eask/easky"))
+(use-package easky :straight (easky :type git :host github :repo "emacs-eask/easky"))
 
-(use-package eask-mode
-  :straight t)
+(use-package eask-mode :straight t)
 
 (customize-set-variable 'emacs-lisp-docstring-fill-column 100)
 
