@@ -35,7 +35,6 @@
 
 (use-package org
   :straight t
-  :ensure t
   :custom
   (org-todo-keywords '((sequence "TODO" "DOING" "DONE")))
   ;; (org-todo-keywords
@@ -55,7 +54,6 @@
 
 (use-package org-roam
   :straight t
-  :ensure t
   :defer t
   :custom
   (org-hide-emphasis-markers t)

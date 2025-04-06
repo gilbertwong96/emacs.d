@@ -8,7 +8,6 @@
 
 (use-package benchmark-init
   :straight t
-  :ensure t
   :config
   ;; To disable collection of benchmark data after init is done.
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
@@ -22,8 +21,7 @@
 
 (use-package use-package-ensure-system-package
   :if (eq system-type 'darwin)
-  :straight (:host github :repo "waymondo/use-package-ensure-system-package")
-  :ensure t)
+  :straight (:host github :repo "waymondo/use-package-ensure-system-package"))
 
 ;; Place user settings to elisp dir
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))

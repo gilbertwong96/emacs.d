@@ -8,7 +8,6 @@
 
 (use-package erlang
   :straight t
-  :ensure t
   :defer t
   :mode
   ("rebar\\.\\(config\\|lock\\)" . erlang-mode)

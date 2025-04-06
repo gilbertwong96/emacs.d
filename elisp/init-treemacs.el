@@ -8,7 +8,6 @@
 
 (use-package treemacs
   :straight t
-  :ensure t
   :defer t
   :init
   (leader-def
@@ -110,8 +109,7 @@
 (use-package treemacs-projectile
   :straight t
   :defer t
-  :after (treemacs projectile)
-  :ensure t)
+  :after (treemacs projectile))
 
 (use-package treemacs-icons-dired
   :straight t
@@ -120,8 +118,7 @@
 
 (use-package treemacs-magit
   :straight t
-  :after (treemacs magit)
-  :ensure t)
+  :after (treemacs magit))
 
 (provide 'init-treemacs)
 ;;; init-treemacs.el ends here

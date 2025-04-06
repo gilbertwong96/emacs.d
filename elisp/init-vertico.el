@@ -13,7 +13,6 @@
 ;; Enable vertico
 (use-package vertico
   :straight t
-  :ensure t
 ;;  :defer t
 ;;  :init
 
@@ -60,7 +59,6 @@
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
   :straight t
-  :ensure t
   :init
   (savehist-mode))
 
@@ -94,7 +92,6 @@
 ;; Configure directory extension.
 (use-package vertico-directory
   :after vertico
-  :ensure nil
   ;; More convenient directory navigation commands
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)
@@ -106,7 +103,6 @@
 ;; Use marginalia to mark and annotations for the items in vertical
 (use-package marginalia
   :straight t
-  :ensure t
   ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
@@ -123,7 +119,6 @@
 
 (use-package nerd-icons-completion
   :straight t
-  :ensure t
   :config
   (nerd-icons-completion-mode))
 
@@ -135,7 +130,6 @@
 (use-package consult
   :straight t
   :after general
-  :ensure t
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
@@ -222,12 +216,10 @@
 
 (use-package consult-todo
   :straight (:host github :repo "liuyinz/consult-todo" :files ("*.el"))
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package embark-consult
   :straight t
-  :ensure t ; only need to install it, embark loads it after consult if found
   :bind
   (("C-." . embark-act)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.

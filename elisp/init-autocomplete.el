@@ -11,7 +11,6 @@
 
 (use-package corfu
   :straight t
-  :ensure t
   :defer t
   ;; Optional customizations
   :custom
@@ -72,7 +71,6 @@
 
 (use-package orderless
   :straight t
-  :ensure t
   :defer t
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
@@ -85,7 +83,6 @@
 ;; A few more useful configurations...
 (use-package emacs
   :straight t
-  :ensure t
   :init
   ;; TAB cycle if there are only few candidates
   (setq completion-cycle-threshold 3)
@@ -103,7 +100,6 @@
 (use-package cape
   :straight t
   :defer 3
-  :ensure t
   ;; Bind dedicated completion commands
   ;; Alternative prefix keys: C-c p, M-p, M-+, ...
   ;; :bind (("C-c p p" . completion-at-point) ;; capf
@@ -145,7 +141,6 @@
 
 (use-package kind-icon
   :straight t
-  :ensure t
   :after corfu
                                         ;:custom
   ;; (kind-icon-blend-background t)

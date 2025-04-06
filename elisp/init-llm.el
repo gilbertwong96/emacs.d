@@ -14,6 +14,7 @@
 
 (use-package aidermacs
   :straight t
+  :defer t
   :config
   (setenv "OPENROUTER_API_KEY" (get-openrouter-api-key))
   :custom

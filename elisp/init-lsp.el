@@ -25,7 +25,6 @@
 
 (use-package eglot
   :straight t
-  :ensure t
   ;; :custom
   ;; (eglot-send-changes-idle-time 0.5 "Send changes after 1 second idle time")
   :defer t

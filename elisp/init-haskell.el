@@ -8,7 +8,6 @@
 
 (use-package haskell-mode
   :straight t
-  :ensure t
   :defer t
   :ensure-system-package haskell
   :hook

@@ -62,7 +62,6 @@
 (use-package evil-collection
   :straight t
   :after evil
-  :ensure t
   :custom
   (global-evil-collection-unimpaired-mode t)
   :init

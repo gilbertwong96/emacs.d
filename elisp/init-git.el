@@ -8,7 +8,6 @@
 
 (use-package magit
   :straight t
-  :ensure t
   :defer t
   :ensure-system-package git
   :config
@@ -23,12 +22,10 @@
   )
 
 (use-package magit-lfs
-  :straight t
-  :ensure t)
+  :straight t)
 
 (use-package git-gutter
   :straight t
-  :ensure t
   :defer t
   :custom
   (git-gutter:update-interval 1 "set update interval 1 seconds")

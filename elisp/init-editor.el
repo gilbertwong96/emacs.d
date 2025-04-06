@@ -8,7 +8,6 @@
 
 (use-package editorconfig
   :straight t
-  :ensure t
   :defer t
   :config
   (editorconfig-mode 1)
@@ -18,7 +17,6 @@
 (use-package flymake-vale
   :if (eq system-type 'darwin)
   :straight (:host github :repo "tpeacock19/flymake-vale")
-  :ensure t
   :ensure-system-package vale
   :hook
   (find-file . flymake-vale-maybe-load)

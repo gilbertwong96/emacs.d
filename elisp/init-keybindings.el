@@ -20,7 +20,6 @@
 (use-package general
   :straight t
   :after which-key
-  :ensure t
   :config
   (general-auto-unbind-keys)
   (defconst evil-leader "SPC")
@@ -75,7 +74,6 @@
 ;; Enhance Imenu
 (use-package imenu-list
   :straight t
-  :ensure t
   :after general
   :config
   (leader-def

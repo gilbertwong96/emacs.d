@@ -154,14 +154,12 @@ screen."
 
 (use-package doom-modeline
   :straight t
-  :ensure t
   :config
   (doom-modeline-mode 1)
   (setq inhibit-compacting-font-caches t))
 
 (use-package ligature
   :straight t
-  :ensure t
   :config
   ;; Enable the www ligature in every possible major mode
   (ligature-set-ligatures 't '("www"))
@@ -207,7 +205,6 @@ screen."
 
 (use-package hl-todo
   :straight t
-  :ensure t
   :hook
   (prog-mode . hl-todo-mode)
   :config
@@ -224,7 +221,6 @@ screen."
 ;; Rainbow delimiters makes nested delimiters easier to understand
 (use-package rainbow-delimiters
   :straight t
-  :ensure t
   :hook ((prog-mode . rainbow-delimiters-mode)))
 
 

@@ -21,7 +21,7 @@
   :defer t
   )
 
-(use-package protobuf-mode :straight t :defer t :ensure t)
+(use-package protobuf-mode :straight t :defer t)
 
 (use-package terraform-mode
   :straight t

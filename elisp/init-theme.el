@@ -8,12 +8,10 @@
 
 (use-package all-the-icons
   :straight t
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package doom-themes
   :straight t
-  :ensure t
   :init
   ;; Set titlebar theme
   (set-frame-parameter nil 'ns-appearance 'dark)

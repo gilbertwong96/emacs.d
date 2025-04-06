@@ -16,7 +16,6 @@
 
 (use-package elisp-slime-nav
   :straight t
-  :ensure t
   :defer t
   :hook
   (emacs-lisp-mode . turn-on-elisp-slime-nav-mode)
@@ -40,13 +39,11 @@
 
 (use-package eask
   :straight t
-  :ensure t
   :hook
   (emacs-lisp-mode . eask-api-setup))
 
 (use-package eldoc-eask
   :straight t
-  :ensure t
   :after elisp-slime-nav
   :hook
   (eask-mode . (lambda () (eldoc-eask-enable)))
