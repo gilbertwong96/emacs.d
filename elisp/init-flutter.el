@@ -6,6 +6,14 @@
 
 ;;; Code:
 
+(use-package groovy-mode
+  :straight t
+  :defer t)
+
+(use-package gradle-mode
+  :straight t
+  :defer t)
+
 (use-package dart-mode :straight t)
 
 (use-package flutter
