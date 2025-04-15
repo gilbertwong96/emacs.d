@@ -14,7 +14,10 @@
   :straight t
   :defer t)
 
-(use-package dart-mode :straight t)
+(use-package dart-mode
+  :straight t
+  :hook
+  (dart-mode . hs-minor-mode))
 
 (use-package flutter
   :straight t

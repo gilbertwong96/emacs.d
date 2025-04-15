@@ -8,7 +8,7 @@
 
 
 (use-package conda-project
-  :straight (:host github :repo "gilbertwong96/conda-project.el" :files ("*.el"))
+  :straight t
   :hook
   (python-ts-mode . conda-project-env-autoactivate-mode)
   (python-ts-mode . (lambda () (setq-local tab-width 4) (setq-local python-indent-offset 4)))
@@ -22,8 +22,7 @@
     "ca" '(conda-project-add :which-key "Add packages")
     "cr" '(conda-project-remove :which-key "Remove packages")
     "cC" '(conda-project-clean :which-key "Clean environment")
-    "cR" '(conda-project-run :which-key "Run command")
-    )
+    "cR" '(conda-project-run :which-key "Run command"))
   )
 
 (provide 'init-python)
