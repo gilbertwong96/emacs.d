@@ -12,6 +12,8 @@
   :straight t
   :mode "\\.swift\\'"
   :interpreter "swift"
+  :hook
+  (swift-mode . hs-minor-mode)
   :init
   (local-leader-def
     "x"  '(:ignore t :which-key "XCode")

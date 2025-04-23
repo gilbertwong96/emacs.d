@@ -6,14 +6,18 @@
 
 ;;; Code:
 
-(use-package yaml-mode
+;; (use-package yaml-mode
+;;   :straight t
+;;   :hook
+;;   (yaml-mode . eglot-ensure)
+;;   :config
+;;   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+;;   )
+
+(use-package yaml-pro
   :straight t
-  :hook
-  (yaml-mode . eglot-ensure)
-  :config
-  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-  :ensure-system-package yaml-language-server
-  )
+  :hook (yaml-pro-mode . yaml-ts-mode)
+  :mode ("\\.ya?ml\\'" . yaml-pro-mode))
 
 ;; Major mode for Hashicorp Configuration Language.
 (use-package hcl-mode
