@@ -34,7 +34,7 @@
 (use-package init-autocomplete)
 (use-package init-vertico)
 (use-package init-evil)
-(use-package init-llm)
+(use-package init-ai)
 (use-package init-terminal)
 
 ;; Develop Kits
@@ -67,8 +67,6 @@
 
 ;; Reading
 (use-package init-reading)
-
-(use-package yaml :straight t)
 
 (provide 'init)
 ;;; init.el ends here
