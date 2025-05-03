@@ -6,26 +6,33 @@
 
 ;;; Code:
 
-
 (defun get-openrouter-api-key ()
   "Get OpenRouter API Key from 1password."
   (string-trim
-   (shell-command-to-string "op read op://Personal/OpenRouter-Gemini/credential")))
+   (shell-command-to-string "op read op://AI/OpenRouter-Gemini/credential")))
 
 (defun get-gemini-api-key ()
   "Get OpenRouter API Key from 1password."
   (string-trim
-   (shell-command-to-string "op read 'op://Personal/Google AI Studio API/credential'")))
+   (shell-command-to-string "op read 'op://AI/Google AI Studio API/credential'")))
+
+(defun get-deepseek-api-key ()
+  "Get DeepSeek API Key from 1password."
+  (string-trim
+   (shell-command-to-string "op read op://AI/deepseek-api-key/password")))
 
 (use-package aidermacs
   :straight t
   :defer t
   :config
-  (setenv "OPENROUTER_API_KEY" (get-openrouter-api-key))
+  ;; (setenv "OPENROUTER_API_KEY" (get-openrouter-api-key))
   ;; (setenv "GEMINI_API_KEY" (get-gemini-api-key))
+  (setenv "DEEPSEEK_API_KEY" (get-deepseek-api-key))
   :custom
   (aidermacs-use-architect-mode t)
-  (aidermacs-default-model "openrouter/google/gemini-2.5-pro-exp-03-25:free")
+  ;; (aidermacs-default-model "openrouter/google/gemini-2.5-pro-exp-03-25:free")
+  ;; (aidermacs-default-model "openrouter/google/gemini-2.5-pro-exp-03-25:free")
+  (aidermacs-default-model "deepseek/deepseek-chat")
   :init
   (leader-def
     "a"  '(:ignore t :which-key "aidermacs")
