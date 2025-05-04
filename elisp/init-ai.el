@@ -8,18 +8,47 @@
 
 (defun get-openrouter-api-key ()
   "Get OpenRouter API Key from 1password."
-  (string-trim
-   (shell-command-to-string "op read op://AI/OpenRouter-Gemini/credential")))
+  (string-trim (shell-command-to-string "op read op://AI/OpenRouter-Gemini/credential")))
 
 (defun get-gemini-api-key ()
   "Get OpenRouter API Key from 1password."
-  (string-trim
-   (shell-command-to-string "op read 'op://AI/Google AI Studio API/credential'")))
+  (string-trim (shell-command-to-string "op read 'op://AI/Google AI Studio API/credential'")))
 
 (defun get-deepseek-api-key ()
   "Get DeepSeek API Key from 1password."
-  (string-trim
-   (shell-command-to-string "op read op://AI/deepseek-api-key/password")))
+  (string-trim (shell-command-to-string "op read op://AI/deepseek-api-key/password")))
+
+(defun get-openai-api-key ()
+  "Get OpenAI API Key from 1password."
+  (string-trim (shell-command-to-string "op read op://AI/OpenAI/credential")))
+
+(use-package minuet
+  :straight t
+  :defer t
+  :bind
+  (("M-y" . #'minuet-complete-with-minibuffer) ;; use minibuffer for completion
+   ("M-i" . #'minuet-show-suggestion) ;; use overlay for completion
+   ("C-c m" . #'minuet-configure-provider)
+   :map minuet-active-mode-map
+   ;; These keymaps activate only when a minuet suggestion is displayed in the current buffer
+   ("M-p" . #'minuet-previous-suggestion) ;; invoke completion or cycle to next completion
+   ("M-n" . #'minuet-next-suggestion) ;; invoke completion or cycle to previous completion
+   ("M-A" . #'minuet-accept-suggestion) ;; accept whole completion
+   ;; Accept the first line of completion, or N lines with a numeric-prefix:
+   ;; e.g. C-u 2 M-a will accepts 2 lines of completion.
+   ("M-a" . #'minuet-accept-suggestion-line)
+   ("M-e" . #'minuet-dismiss-suggestion))
+  :custom
+  (minuet-provider 'openai)
+  :hook
+  (prog-mode . minuet-auto-suggestion-mode)
+  (minuet-active-mode . evil-normalize-keymaps)
+  :config
+  (setenv "OPENAI_API_KEY" (get-openai-api-key))
+  ;; change openai model to gpt-4.1
+  (plist-put minuet-openai-options :model "gpt-4.1")
+  ;; :init
+  (plist-put minuet-openai-options :api-key "OPENAI_API_KEY"))
 
 (use-package aidermacs
   :straight t

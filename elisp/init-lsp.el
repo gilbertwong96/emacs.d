@@ -38,6 +38,7 @@
   (js-ts-mode . eglot-ensure)
   (vue-mode . eglot-ensure)
   (dart-mode . eglot-ensure)
+  (swift-mode . eglot-ensure)
   :config
   (dolist (server `((vue-mode . ("vue-language-server" "--stdio"
                                  :initializationOptions ,(vue-eglot-init-options)))
