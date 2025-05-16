@@ -7,11 +7,7 @@
 ;;; Code:
 
 
-(use-package elixir-ts-mode
-  :straight t
-  :defer t
-  :ensure-system-package elixir
-  )
+(use-package elixir-ts-mode :defer t)
 
 (use-package mix
   :straight t
