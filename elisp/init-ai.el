@@ -46,7 +46,7 @@
   :config
   (setenv "OPENAI_API_KEY" (get-openai-api-key))
   ;; change openai model to gpt-4.1
-  (plist-put minuet-openai-options :model "gpt-4.1")
+  (plist-put minuet-openai-options :model "codex-mini-latest")
   ;; :init
   (plist-put minuet-openai-options :api-key "OPENAI_API_KEY"))
 

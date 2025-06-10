@@ -57,5 +57,11 @@
     "l"  '(:ignore t :which-key "lsp")
     "lr" '(eglot-reconnect :which-key "Reconnect")))
 
+
+(use-package eglot-booster
+  :straight (:host github :repo "jdtsmith/eglot-booster")
+  :after eglot
+  :config (eglot-booster-mode))
+
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
