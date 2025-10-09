@@ -22,6 +22,84 @@
   "Get OpenAI API Key from 1password."
   (string-trim (shell-command-to-string "op read op://AI/OpenAI/credential")))
 
+(defun get-context7-api-key ()
+  "Get context 7 API Key from 1password."
+  (string-trim (shell-command-to-string "op read op://AI/Context7/credential")))
+
+(defun get-brave-api-key ()
+  "Get context 7 API Key from 1password."
+  (string-trim (shell-command-to-string "op read op://AI/BraveAPI/credential")))
+
+(use-package gptel
+  :straight t
+  :custom
+  (gptel-tools)
+  :config
+  (require 'gptel-integrations)
+  (gptel-make-tool
+   :name "read_buffer"              ; javascript-style snake_case name
+   :function (lambda (buffer)            ; the function that will run
+               (unless (buffer-live-p (get-buffer buffer))
+                 (error "error: Buffer %s is not live" buffer))
+               (with-current-buffer  buffer
+                 (buffer-substring-no-properties (point-min) (point-max))))
+   :description "return the contents of an emacs buffer"
+   :args (list '(:name "buffer"
+                       :type string     ; :type value must be a symbol
+                       :description "the name of the buffer whose contents are to be retrieved"))
+   :category "emacs")                ; An arbitrary label for grouping
+  (gptel-make-tool
+   :name "create_file"             ; javascript-style  snake_case name
+   :function (lambda (path filename content) ; the function that runs
+               (let ((full-path (expand-file-name filename path)))
+                 (with-temp-buffer
+                   (insert content)
+                   (write-file full-path))
+                 (format "Created file %s in %s" filename path)))
+   :description "Create a new file with the specified content"
+   :args (list '(:name "path"      ; a list of argument specifications
+                       :type string
+                       :description "The directory where to create the file")
+               '(:name "filename"
+                       :type string
+                       :description "The name of the file to create")
+               '(:name "content"
+                       :type string
+                       :description "The content to write to the file"))
+   :category "filesystem")           ; An arbitrary label for grouping
+  )
+
+(use-package mcp
+  :straight t
+  :after gptel
+  :custom (mcp-hub-servers
+           `(("context7" . (:command "npx"
+                                     :args ("-y" "@upstash/context7-mcp" "--api-key"
+                                            ,(get-context7-api-key))))
+             ("brave-search" . (:command "npx"
+                                         :args ("-y" "@brave/brave-search-mcp-server"
+                                                "--transport" "stdio")
+                                         :env (:BRAVE_API_KEY ,(get-brave-api-key))))))
+  :config (require 'mcp-hub)
+  :hook (after-init . mcp-hub-start-all-server))
+
+(use-package superchat
+  :straight (:host github :repo "yibie/superchat")
+  :after gptel
+  :custom
+  (superchat-lang "中文")
+  (superchat-default-directories '("~/Documents" "~/WorkSpace/")))
+
+(use-package claude-code-ide
+  :straight (:host github :repo "manzaltu/claude-code-ide.el")
+  :config
+  (claude-code-ide-emacs-tools-setup)
+  :init
+  (leader-def
+    "C"  '(:ignore t :which-key "Claude IDE")
+    "Cc" '(claude-code-ide-menu :which-key "Popup ClaudeCode menu"))
+  )
+
 (use-package minuet
   :straight t
   :defer t
@@ -59,90 +137,12 @@
   (setenv "DEEPSEEK_API_KEY" (get-deepseek-api-key))
   :custom
   (aidermacs-use-architect-mode t)
-  ;; (aidermacs-default-model "openrouter/google/gemini-2.5-pro-exp-03-25:free")
-  ;; (aidermacs-default-model "openrouter/google/gemini-2.5-pro-exp-03-25:free")
-  (aidermacs-default-model "deepseek/deepseek-chat")
+  (aidermacs-default-model "deepseek/deepseek-reasoner")
   :init
   (leader-def
     "a"  '(:ignore t :which-key "aidermacs")
     "aa" '(aidermacs-transient-menu :which-key "Popup Aidermacs menu")))
 
-(use-package whisper
-  :straight (:host github :repo "natrys/whisper.el" :branch "master")
-  :bind ("C-s-r" . whisper-run)
-  :config
-  (setq whisper-install-directory "~/.local/bin/"
-        whisper-model "base"
-        whisper-language "en"
-        whisper-translate nil
-        whisper-use-threads (/ (num-processors) 2)
-        whisper--ffmpeg-input-device ":0"))
-
-(defun whisper/get-ffmpeg-device ()
-  "Gets the list of devices available to ffmpeg.
-Credit to @rksm:
-The output of the ffmpeg command is pretty messy, e.g.
-  [AVFoundation indev @ 0x7f867f004580] AVFoundation video devices:
-  [AVFoundation indev @ 0x7f867f004580] [0] FaceTime HD Camera (Built-in)
-  [AVFoundation indev @ 0x7f867f004580] AVFoundation audio devices:
-  [AVFoundation indev @ 0x7f867f004580] [0] Cam Link 4K
-  [AVFoundation indev @ 0x7f867f004580] [1] MacBook Pro Microphone
-so we need to parse it to get the list of devices.
-The return value contains two lists, one for video devices and one for audio
-devices.Each list contains a list of cons cells, where the car is the device
- number and the cdr is the device name."
-  (unless (string-equal system-type "darwin")
-    (error "This function is currently only supported on macOS"))
-
-  (let ((lines (string-split (shell-command-to-string "ffmpeg -list_devices true -f avfoundation -i dummy || true") "\n")))
-    (cl-loop with at-video-devices = nil
-             with at-audio-devices = nil
-             with video-devices = nil
-             with audio-devices = nil
-             for line in lines
-             when (string-match "AVFoundation video devices:" line)
-             do (setq at-video-devices t
-                      at-audio-devices nil)
-             when (string-match "AVFoundation audio devices:" line)
-             do (setq at-audio-devices t
-                      at-video-devices nil)
-             when (and at-video-devices
-                       (string-match "\\[\\([0-9]+\\)\\] \\(.+\\)" line))
-             do (push (cons (string-to-number (match-string 1 line)) (match-string 2 line)) video-devices)
-             when (and at-audio-devices
-                       (string-match "\\[\\([0-9]+\\)\\] \\(.+\\)" line))
-             do (push (cons (string-to-number (match-string 1 line)) (match-string 2 line)) audio-devices)
-             finally return (list (nreverse video-devices) (nreverse audio-devices)))))
-
-
-(defun whisper/find-device-matching (string type)
-  "Get the devices from and look for a device matching `STRING'.
-`TYPE' can be :video or :audio."
-  (let* ((devices (whisper/get-ffmpeg-device))
-         (device-list (if (eq type :video)
-                          (car devices)
-                        (cadr devices))))
-    (cl-loop for device in device-list
-             when (string-match-p string (cdr device))
-             return (car device))))
-
-
-(defcustom whisper/default-audio-device 0
-  "The default audio device to use for whisper.el and outher audio processes."
-  :type 'integer)
-
-(defun whisper/select-default-audio-device (&optional device-name)
-  "Interactively select an audio device.
-Select audio device to use for whisper.el and other audio processes.
-If `DEVICE-NAME' is provided, it will be used instead of prompting the user."
-  (interactive)
-  (let* ((audio-devices (cadr (whisper/get-ffmpeg-device)))
-         (indexes (mapcar #'car audio-devices))
-         (names (mapcar #'cdr audio-devices))
-         (name (or device-name (completing-read "Select audio device: " names nil t))))
-    (setq whisper/default-audio-device (whisper/find-device-matching name :audio))
-    (unless (boundp 'whisper--ffmpeg-input-device)
-      (setq whisper--ffmpeg-input-device (format ":%s" whisper/default-audio-device)))))
 
 (provide 'init-ai)
 ;;; init-ai.el ends here.
