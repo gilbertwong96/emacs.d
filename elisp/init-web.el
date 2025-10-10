@@ -65,7 +65,8 @@
   (heex-ts-mode . emmet-mode))
 
 (use-package vue-ts-mode
-    :straight (:host github :repo "8uff3r/vue-ts-mode"))
+  :straight (:host github :repo "8uff3r/vue-ts-mode")
+  :defer t)
 
 (use-package request :straight t)
 
