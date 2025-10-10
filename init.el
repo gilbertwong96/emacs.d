@@ -17,7 +17,9 @@
   (straight-use-package-by-default nil)
   (straight-check-for-modifications '(watch-files find-when-checking)))
 
-;; (use-package use-package :straight t)
+(use-package project :straight (:type built-in) :defer t)
+(use-package flymake :straight (:type built-in) :defer t)
+(use-package xref :straight (:type built-in) :defer t)
 
 (use-package use-package-ensure-system-package
   :if (eq system-type 'darwin)
