@@ -32,10 +32,12 @@
 
 (use-package gptel
   :straight t
-  :custom
-  (gptel-tools)
+  :defer t
   :config
-  (require 'gptel-integrations)
+  (setq gptel-model   'deepseek-reasoner
+        gptel-backend (gptel-make-deepseek "DeepSeek"
+                        :stream t
+                        :key (get-deepseek-api-key)))
   (gptel-make-tool
    :name "read_buffer"              ; javascript-style snake_case name
    :function (lambda (buffer)            ; the function that will run
@@ -67,11 +69,13 @@
                        :type string
                        :description "The content to write to the file"))
    :category "filesystem")           ; An arbitrary label for grouping
+  (require 'gptel-integrations)
   )
 
 (use-package mcp
   :straight t
   :after gptel
+  :defer t
   :custom (mcp-hub-servers
            `(("context7" . (:command "npx"
                                      :args ("-y" "@upstash/context7-mcp" "--api-key"
@@ -86,12 +90,14 @@
 (use-package superchat
   :straight (:host github :repo "yibie/superchat")
   :after gptel
+  :defer t
   :custom
   (superchat-lang "中文")
   (superchat-default-directories '("~/Documents" "~/WorkSpace/")))
 
 (use-package claude-code-ide
   :straight (:host github :repo "manzaltu/claude-code-ide.el")
+  :defer t
   :config
   (claude-code-ide-emacs-tools-setup)
   :init
@@ -128,20 +134,20 @@
   ;; :init
   (plist-put minuet-openai-options :api-key "OPENAI_API_KEY"))
 
-(use-package aidermacs
-  :straight t
-  :defer t
-  :config
-  ;; (setenv "OPENROUTER_API_KEY" (get-openrouter-api-key))
-  ;; (setenv "GEMINI_API_KEY" (get-gemini-api-key))
-  (setenv "DEEPSEEK_API_KEY" (get-deepseek-api-key))
-  :custom
-  (aidermacs-use-architect-mode t)
-  (aidermacs-default-model "deepseek/deepseek-reasoner")
-  :init
-  (leader-def
-    "a"  '(:ignore t :which-key "aidermacs")
-    "aa" '(aidermacs-transient-menu :which-key "Popup Aidermacs menu")))
+;; (use-package aidermacs
+;;   :straight t
+;;   :defer t
+;;   :config
+;;   ;; (setenv "OPENROUTER_API_KEY" (get-openrouter-api-key))
+;;   ;; (setenv "GEMINI_API_KEY" (get-gemini-api-key))
+;;   (setenv "DEEPSEEK_API_KEY" (get-deepseek-api-key))
+;;   :custom
+;;   (aidermacs-use-architect-mode t)
+;;   (aidermacs-default-model "deepseek/deepseek-reasoner")
+;;   :init
+;;   (leader-def
+;;     "a"  '(:ignore t :which-key "aidermacs")
+;;     "aa" '(aidermacs-transient-menu :which-key "Popup Aidermacs menu")))
 
 
 (provide 'init-ai)
