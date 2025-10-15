@@ -93,7 +93,11 @@
   :defer t
   :custom
   (superchat-lang "中文")
-  (superchat-default-directories '("~/Documents" "~/WorkSpace/")))
+  (superchat-default-directories '("~/Documents" "~/WorkSpace/"))
+  :init
+  (leader-def
+    "s" '(:ignore t :which-key "SuperChat")
+    "ss" '(superchat :which-key "Toggle SuperChat")))
 
 (use-package claude-code-ide
   :straight (:host github :repo "manzaltu/claude-code-ide.el")
