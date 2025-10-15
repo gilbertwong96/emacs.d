@@ -9,9 +9,6 @@
 ;; Start Server
 (server-start)
 
-;; If the value is greater than 100, redisplay will never recenter point, but will always
-;; scroll just enough text to bring point into view, even if you move far away. A value of
-;; zero means always recenter point if it moves off screen."
 (defun gilbert/vim-like-scrolloff (scrolloff)
   "Make the Emacs scroll like vim.
 If the SCROLLOFF is greater than 100, redisplay will never recenter point, but
@@ -19,7 +16,37 @@ will always scroll just enough text to bring point into view, even if you
 move far away A value of zero means always recenter point if it moves off
 screen."
   (setq scroll-conservatively 101)
-  (setq scroll-margin scrolloff))
+  (setq scroll-margin scrolloff)
+  )
+
+(defun gilbert/setting-pixel-scroll ()
+  "Setting pixel scroll settings."
+  ;; Pixel scroll
+  (pixel-scroll-precision-mode)
+
+  ;; When scrolling rapidly, skip precise, on-the-fly fontification and layout
+  ;; so scrolling feels smoother; may briefly show unfontified text or slightly
+  ;; inaccurate positions with mixed fonts or variable line heights.
+  (customize-set-variable 'fast-but-imprecise-scrolling t)
+
+  ;; Defer JIT fontification until Emacs has been idle for ~0.1s to reduce
+  ;; work during scrolling; expect occasional briefly unfontified regions
+  ;; that get filled in once input pauses.
+  (customize-set-variable 'jit-lock-defer-time 0.05)
+
+  ;; point always keeps its screen position
+  (customize-set-variable 'scroll-preserve-screen-position 'always)
+
+  ;; Enable horizontal scrolling by tilting mouse wheel or via touchpad.
+  (customize-set-variable 'mouse-wheel-tilt-scroll t)
+
+  ;; Swap direction of ‘wheel-right’ and ‘wheel-left’
+  (customize-set-variable 'mouse-wheel-flip-direction t)
+
+  ;; The line displaying point in each window is automatically scrolled horizontally
+  ;; to make point visible
+  (customize-set-variable 'auto-hscroll-mode 1)
+  )
 
 ;; Set transparency
 (defun gilbert/set-transparency (value)
@@ -129,12 +156,14 @@ screen."
   ;; Enable column mode
   (column-number-mode t)
 
+  (gilbert/setting-pixel-scroll)
+
   ;; Set transparency 90
   (gilbert/set-transparency 100)
 
   (gilbert/set-config-system-utf8)
 
-  (gilbert/vim-like-scrolloff 12)
+  ;; (gilbert/vim-like-scrolloff 12)
 
   (gilbert/set-column-indicator 100)
 
