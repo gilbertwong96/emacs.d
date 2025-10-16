@@ -46,5 +46,10 @@
   (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
   )
 
+(use-package breadcrumb
+  :straight t
+  :config
+  (breadcrumb-mode))
+
 (provide 'init-theme)
 ;;; init-theme.el ends here
