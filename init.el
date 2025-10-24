@@ -6,6 +6,18 @@
 
 ;;; Code:
 
+
+(use-package benchmark-init
+  :straight t
+  :config
+  ;; To disable collection of benchmark data after init is done.
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
+(use-package straight
+  :custom
+  (straight-use-package-by-default nil)
+  (straight-check-for-modifications '(watch-files find-when-checking)))
+
 (use-package compile-angel
   :straight t
   :demand t
@@ -30,17 +42,6 @@
   ;; A global mode that compiles .el files before they are loaded
   ;; using `load' or `require'.
   (compile-angel-on-load-mode 1))
-
-(use-package benchmark-init
-  :straight t
-  :config
-  ;; To disable collection of benchmark data after init is done.
-  (add-hook 'after-init-hook 'benchmark-init/deactivate))
-
-(use-package straight
-  :custom
-  (straight-use-package-by-default nil)
-  (straight-check-for-modifications '(watch-files find-when-checking)))
 
 (use-package project :straight (:type built-in) :defer t)
 (use-package flymake :straight (:type built-in) :defer t)
