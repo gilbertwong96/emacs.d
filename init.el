@@ -18,10 +18,14 @@
   (straight-use-package-by-default nil)
   (straight-check-for-modifications '(watch-files find-when-checking)))
 
+(use-package exec-path-from-shell
+  :straight t
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package project :straight (:type built-in) :defer t)
 (use-package flymake :straight (:type built-in) :defer t)
 (use-package xref :straight (:type built-in) :defer t)
-
 
 
 (use-package use-package-ensure-system-package
