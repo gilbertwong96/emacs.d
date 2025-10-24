@@ -7,7 +7,7 @@
 ;;; Code:
 
 
-(use-package elixir-ts-mode)
+(use-package elixir-ts-mode :straight t)
 
 (use-package mix
   :straight t

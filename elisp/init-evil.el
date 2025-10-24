@@ -57,7 +57,7 @@
                     ("M-<down>" . shrink-window))
          )
         )
-)
+  )
 
 (use-package evil-collection
   :straight t

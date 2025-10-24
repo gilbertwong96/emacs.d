@@ -11,7 +11,6 @@
  ("cfrs" . "981bddb3fb9fd9c58aed182e352975bd10ad74c8")
  ("claude-code-ide.el" . "32d853e20b9d245a6ee89c4a153a4e568250c62c")
  ("compat" . "97f24af413a38a7f1aaedb29f5aaaa333796a5b4")
- ("compile-angel.el" . "ec6927a673e1e492f589baffbd1b7e462a551aad")
  ("cond-let" . "79a16e1f2428f0f79f03250b987bc79cd37a029e")
  ("conda-project.el" . "21becf078e21cc98a5890dff9049928c4712c235")
  ("consult" . "f0c896d32624ee6ca0bd7e9b9b7638154fa366ae")
