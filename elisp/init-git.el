@@ -22,7 +22,8 @@
   )
 
 (use-package magit-lfs
-  :straight t)
+  :straight t
+  :defer t)
 
 (use-package git-gutter
   :straight t
