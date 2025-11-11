@@ -9,7 +9,7 @@
 (use-package treesit-auto
   :straight t
   :custom
-  (treesit-auto-install 'prompt)
+  (treesit-auto-install 'prompt 'json)
   :init
   (setq major-mode-remap-alist
       '((python-mode . python-ts-mode)))
