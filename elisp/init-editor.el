@@ -11,8 +11,11 @@
   :defer t
   :config
   (editorconfig-mode 1)
-  :ensure-system-package editorconfig
-  )
+  :ensure-system-package editorconfig)
+
+(use-package uniline
+  :straight t
+  :defer t)
 
 (use-package flymake-vale
   :if (eq system-type 'darwin)

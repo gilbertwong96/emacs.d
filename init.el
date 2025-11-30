@@ -38,6 +38,7 @@
 
 ;; Basic setting for editor
 (use-package init-theme)
+(use-package init-treesit)
 (use-package init-settings)
 (use-package init-keybindings)
 ;; Knowledge Management System
@@ -63,7 +64,6 @@
 (use-package init-python)
 (use-package init-rust)
 (use-package init-elixir)
-(use-package init-treesit)
 (use-package init-db)
 (use-package init-flutter)
 
