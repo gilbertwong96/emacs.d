@@ -9,10 +9,9 @@
 (use-package treesit-auto
   :straight t
   :custom
-  (treesit-auto-install 'prompt 'json)
-  :init
-  (setq major-mode-remap-alist
-      '((python-mode . python-ts-mode)))
+  (treesit-auto-install t)
+  (major-mode-remap-alist '((python-mode . python-ts-mode)))
+  (treesit-auto-langs '(json rust go typescript tsx vue))
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))

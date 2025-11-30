@@ -206,8 +206,7 @@ screen."
                             "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
                             "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
 
-  (global-ligature-mode 't)
-  )
+  (global-ligature-mode 't))
 
 (use-package iedit :straight t)
 
