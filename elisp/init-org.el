@@ -127,8 +127,7 @@
   :after org
   :hook
   (org-mode . org-modern-mode)
-  (org-agenda-finalize . org-modern-agenda)
-  )
+  (org-agenda-finalize . org-modern-agenda))
 
 ;;==============================================================================
 ;; Define functions

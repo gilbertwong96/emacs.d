@@ -31,7 +31,6 @@
  ("eldoc" . "6c389a8d223deadedda4d69fe8d7de25068e7d91")
  ("eldoc-eask" . "ff5ae9ef9bd78c53d363efb84705f19b6c633363")
  ("elisp-slime-nav" . "0b97339c552cac92788cab7c0724ca7ba160cd0e")
- ("elixir-ts-mode" . "e518e9a086d3d3c427411fbe3aa22f34c2e85614")
  ("emacs-async" . "31cb2fea8f4bc7a593acd76187a89075d8075500")
  ("emacs-corfu-doc-terminal" . "da5042082d2296946972599f6d95bbbffaf63fba")
  ("emacs-corfu-terminal" . "501548c3d51f926c687e8cd838c5865ec45d03cc")
