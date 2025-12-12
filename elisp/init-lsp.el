@@ -20,12 +20,10 @@
   (python-ts-mode . eglot-ensure)
   (typescript-ts-mode . eglot-ensure)
   (js-ts-mode . eglot-ensure)
-  (vue-ts-mode . eglot-ensure)
   (dart-mode . eglot-ensure)
   (swift-mode . eglot-ensure)
   :config
-  (dolist (server `((vue-ts-mode . ("vue-language-server" "--stdio"))
-                    (sql-mode . ("sqls"))
+  (dolist (server `((sql-mode . ("sqls"))
                     (swift-mode . ("sourcekit-lsp"))))
     (add-to-list 'eglot-server-programs server))
   :init

@@ -32,8 +32,7 @@
   ("\\.ts\\'" . typescript-ts-mode)
   :config
   ;; Hook it in for shell scripts running via node.js
-  (add-to-list 'interpreter-mode-alist '("node" . js-ts-mode))
-  )
+  (add-to-list 'interpreter-mode-alist '("node" . js-ts-mode)))
 
 (use-package skewer-mode
   :straight t
@@ -66,6 +65,8 @@
 
 (use-package vue-ts-mode
   :after typescript-ts-mode
+  :mode
+  ("\\.vue\\'" . vue-ts-mode)
   :straight (:host github :repo "8uff3r/vue-ts-mode"))
 
 (use-package request :straight t)
