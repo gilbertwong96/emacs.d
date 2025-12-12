@@ -78,5 +78,10 @@
 ;; Reading
 (use-package init-reading)
 
+;; Support loading custom.el
+(let ((custom-file (expand-file-name "custom.el" user-emacs-directory)))
+  (when (file-exists-p custom-file)
+    (load custom-file)))
+
 (provide 'init)
 ;;; init.el ends here
