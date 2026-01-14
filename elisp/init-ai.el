@@ -97,9 +97,13 @@
   (claude-code-ide-emacs-tools-setup)
   :init
   (leader-def
-    "C"  '(:ignore t :which-key "Claude IDE")
-    "Cc" '(claude-code-ide-menu :which-key "Popup ClaudeCode menu"))
-  )
+    "a"  '(:ignore t :which-key "Claude IDE (AI)")
+    "ac" '(claude-code-ide-menu :which-key "Popup Claude Code menu")
+    "aw" '(claude-code-ide--set-window-side :which-key "Set Claude Code window")
+    "ap" '(claude-code-ide-send-prompt :which-key "Send prompt")
+    "as" '(claude-code-ide-switch-to-buffer :which-key "Switch to Buffer")
+    "ar" '(claude-code-ide-resume :which-key "Resume session")
+    "at" '(claude-code-ide-toggle :which-key "Toggle Claude Code")))
 
 (use-package minuet
   :straight t
