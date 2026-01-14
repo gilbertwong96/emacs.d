@@ -6,6 +6,10 @@
 
 ;;; Code:
 
+(custom-set-variables
+ '(vterm-max-scrollback 100000)
+ '(vterm-timer-delay 0.01))
+
 (use-package multi-vterm
   :straight t
   :defer t
