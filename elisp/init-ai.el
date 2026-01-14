@@ -70,7 +70,10 @@
                        :description "The content to write to the file"))
    :category "filesystem")           ; An arbitrary label for grouping
   (require 'gptel-integrations)
-  )
+  :init
+
+  (leader-def
+    "gt" '(gptel :which-key "GPTel")))
 
 (use-package mcp
   :straight t
@@ -86,18 +89,6 @@
                                          :env (:BRAVE_API_KEY ,(get-brave-api-key))))))
   :config (require 'mcp-hub)
   :hook (after-init . mcp-hub-start-all-server))
-
-(use-package superchat
-  :straight (:host github :repo "yibie/superchat")
-  :after gptel
-  :defer t
-  :custom
-  (superchat-lang "中文")
-  (superchat-default-directories '("~/Documents" "~/WorkSpace/"))
-  :init
-  (leader-def
-    "s" '(:ignore t :which-key "SuperChat")
-    "ss" '(superchat :which-key "Toggle SuperChat")))
 
 (use-package claude-code-ide
   :straight (:host github :repo "manzaltu/claude-code-ide.el")
@@ -137,21 +128,6 @@
   (plist-put minuet-openai-options :model "gpt-4.1-mini")
   ;; :init
   (plist-put minuet-openai-options :api-key "OPENAI_API_KEY"))
-
-;; (use-package aidermacs
-;;   :straight t
-;;   :defer t
-;;   :config
-;;   ;; (setenv "OPENROUTER_API_KEY" (get-openrouter-api-key))
-;;   ;; (setenv "GEMINI_API_KEY" (get-gemini-api-key))
-;;   (setenv "DEEPSEEK_API_KEY" (get-deepseek-api-key))
-;;   :custom
-;;   (aidermacs-use-architect-mode t)
-;;   (aidermacs-default-model "deepseek/deepseek-reasoner")
-;;   :init
-;;   (leader-def
-;;     "a"  '(:ignore t :which-key "aidermacs")
-;;     "aa" '(aidermacs-transient-menu :which-key "Popup Aidermacs menu")))
 
 
 (provide 'init-ai)
