@@ -6,6 +6,9 @@
 
 ;;; Code:
 
+;; Initialize ENV variables
+(setenv "EDITOR" "emacsclient")
+
 ;; Start Server
 (server-start)
 
@@ -94,8 +97,7 @@ screen."
   (set-selection-coding-system 'utf-8-unix)
   (set-terminal-coding-system 'utf-8-unix)
   (setq locale-coding-system 'utf-8)
-  (prefer-coding-system 'utf-8)
-  )
+  (prefer-coding-system 'utf-8))
 
 (defun gilbert/clean-temp-files ()
   "Use no-littering to clean temp files."

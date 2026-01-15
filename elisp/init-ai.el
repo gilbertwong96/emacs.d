@@ -95,6 +95,8 @@
   :defer t
   :config
   (claude-code-ide-emacs-tools-setup)
+  :custom
+  (claude-code-ide-terminal-backend 'eat)
   :init
   (leader-def
     "a"  '(:ignore t :which-key "Claude IDE (AI)")
