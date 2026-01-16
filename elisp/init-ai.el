@@ -96,11 +96,12 @@
   :config
   (claude-code-ide-emacs-tools-setup)
   :custom
-  (claude-code-ide-terminal-backend 'eat)
+  (claude-code-ide-terminal-backend 'vterm)
   :init
   (leader-def
     "a"  '(:ignore t :which-key "Claude IDE (AI)")
-    "ac" '(claude-code-ide-menu :which-key "Popup Claude Code menu")
+    "ac" '(claude-code-ide-stop :which-key "Close Claude Code")
+    "am" '(claude-code-ide-menu :which-key "Popup Claude Code menu")
     "aw" '(claude-code-ide--set-window-side :which-key "Set Claude Code window")
     "ap" '(claude-code-ide-send-prompt :which-key "Send prompt")
     "as" '(claude-code-ide-switch-to-buffer :which-key "Switch to Buffer")
