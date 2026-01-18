@@ -17,8 +17,9 @@
     :keymaps 'mix-minor-mode-map
     "m"  '(:ignore t :which-key "mix")
     "mt" '(mix-execute-task :which-key "Execute Task")
-    )
-  )
+    ))
+
+(use-package elixir-ts-mode :mode ("\\.exs\\'" . elixir-ts-mode))
 
 (provide 'init-elixir)
 ;;; init-elixir.el ends here
