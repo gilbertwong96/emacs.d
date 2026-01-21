@@ -97,6 +97,9 @@
   (claude-code-ide-emacs-tools-setup)
   :custom
   (claude-code-ide-terminal-backend 'vterm)
+  ;; Disable the terminal reflow glitch prevention (not recommended until bug is fixed)
+  ;; Related link: https://github.com/anthropics/claude-code/issues/826
+  (claude-code-ide-prevent-reflow-glitch nil)
   :init
   (leader-def
     "a"  '(:ignore t :which-key "Claude IDE (AI)")
