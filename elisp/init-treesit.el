@@ -11,7 +11,7 @@
   :custom
   (treesit-auto-install t)
   (major-mode-remap-alist '((python-mode . python-ts-mode)))
-  (treesit-auto-langs '(json rust go typescript tsx vue javascript elixir heex yaml))
+  (treesit-auto-langs '(json rust go typescript tsx vue javascript elixir heex yaml css))
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
