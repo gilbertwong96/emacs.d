@@ -253,6 +253,13 @@ screen."
   :straight t
   :hook ((prog-mode . rainbow-delimiters-mode)))
 
+;; PO/POT file header customization
+(with-eval-after-load 'po-mode
+  (setopt po-default-file-header "")
+  (setopt po-default-copyright-holder "Gilbert Wong")
+  (setopt po-default-author "Gilbert Wong")
+  (setopt po-default-email "gilbertwong96@icloud.com")
+  (setopt po-default-year (format-time-string "%Y")))
 
 (provide 'init-settings)
 ;;; init-settings.el ends here
