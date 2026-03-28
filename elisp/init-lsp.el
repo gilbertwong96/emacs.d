@@ -24,8 +24,28 @@
   (swift-mode . eglot-ensure)
   :config
   (dolist (server `((sql-mode . ("sqls"))
-                    (swift-mode . ("sourcekit-lsp"))))
+                    (swift-mode . ("sourcekit-lsp"))
+                    ((tsx-ts-mode typescript-ts-mode)
+                     . ("rass"
+                        "--"
+                        "typescript-language-server" "--stdio"
+                        "--"
+                        "eslint-lsp" "--stdio"
+                        "--"
+                        "tailwindcss-language-server" "--stdio"))
+                    ))
     (add-to-list 'eglot-server-programs server))
+  (setq-default eglot-workspace-configuration
+                '((:typescript
+                   (:format
+                    (:indentSize 2
+                                 :tabSize 2
+                                 :convertTabsToSpaces t))
+                   :javascript
+                   (:format
+                    (:indentSize 2
+                                 :tabSize 2
+                                 :convertTabsToSpaces t)))))
   :init
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (local-leader-def
@@ -38,11 +58,6 @@
     "l"  '(:ignore t :which-key "lsp")
     "lr" '(eglot-reconnect :which-key "Reconnect")))
 
-
-(use-package eglot-booster
-  :straight (:host github :repo "jdtsmith/eglot-booster")
-  :after eglot
-  :config (eglot-booster-mode))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

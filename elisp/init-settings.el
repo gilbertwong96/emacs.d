@@ -155,6 +155,10 @@ screen."
   ;; Enable file auto save
   (setq auto-save-visited-mode t)
 
+  ;; Store auto-save files in /tmp/
+  (setq auto-save-file-name-transforms
+        `((".*" ,(expand-file-name "\\1" "/tmp/") t)))
+
   ;; Enable column mode
   (column-number-mode t)
 
