@@ -30,115 +30,48 @@
   "Get context 7 API Key from 1password."
   (string-trim (shell-command-to-string "op read op://AI/BraveAPI/credential")))
 
-(use-package gptel
+(use-package pi-coding-agent
   :straight t
-  :defer t
+  :init (defalias 'pi 'pi-coding-agent)
   :config
-  (setq gptel-model   'deepseek-reasoner
-        gptel-backend (gptel-make-deepseek "DeepSeek"
-                        :stream t
-                        :key (get-deepseek-api-key)))
-  (gptel-make-tool
-   :name "read_buffer"              ; javascript-style snake_case name
-   :function (lambda (buffer)            ; the function that will run
-               (unless (buffer-live-p (get-buffer buffer))
-                 (error "error: Buffer %s is not live" buffer))
-               (with-current-buffer  buffer
-                 (buffer-substring-no-properties (point-min) (point-max))))
-   :description "return the contents of an emacs buffer"
-   :args (list '(:name "buffer"
-                       :type string     ; :type value must be a symbol
-                       :description "the name of the buffer whose contents are to be retrieved"))
-   :category "emacs")                ; An arbitrary label for grouping
-  (gptel-make-tool
-   :name "create_file"             ; javascript-style  snake_case name
-   :function (lambda (path filename content) ; the function that runs
-               (let ((full-path (expand-file-name filename path)))
-                 (with-temp-buffer
-                   (insert content)
-                   (write-file full-path))
-                 (format "Created file %s in %s" filename path)))
-   :description "Create a new file with the specified content"
-   :args (list '(:name "path"      ; a list of argument specifications
-                       :type string
-                       :description "The directory where to create the file")
-               '(:name "filename"
-                       :type string
-                       :description "The name of the file to create")
-               '(:name "content"
-                       :type string
-                       :description "The content to write to the file"))
-   :category "filesystem")           ; An arbitrary label for grouping
-  (require 'gptel-integrations)
-  :init
-
+  ;; pi-coding-agent leader keybindings under SPC a / C-c a
   (leader-def
-    "gt" '(gptel :which-key "GPTel")))
-
-(use-package mcp
-  :straight t
-  :after gptel
-  :defer t
-  :custom (mcp-hub-servers
-           `(("context7" . (:command "npx"
-                                     :args ("-y" "@upstash/context7-mcp" "--api-key"
-                                            ,(get-context7-api-key))))
-             ("brave-search" . (:command "npx"
-                                         :args ("-y" "@brave/brave-search-mcp-server"
-                                                "--transport" "stdio")
-                                         :env (:BRAVE_API_KEY ,(get-brave-api-key))))))
-  :config (require 'mcp-hub)
-  :hook (after-init . mcp-hub-start-all-server))
-
-(use-package claude-code-ide
-  :straight (:host github :repo "manzaltu/claude-code-ide.el")
-  :defer t
-  :config
-  (claude-code-ide-emacs-tools-setup)
-  :custom
-  (claude-code-ide-terminal-backend 'vterm)
-  ;; Disable the terminal reflow glitch prevention (not recommended until bug is fixed)
-  ;; Related link: https://github.com/anthropics/claude-code/issues/826
-  (claude-code-ide-prevent-reflow-glitch nil)
-  :init
-  (leader-def
-    "a"  '(:ignore t :which-key "Claude IDE (AI)")
-    "ac" '(claude-code-ide-stop :which-key "Close Claude Code")
-    "am" '(claude-code-ide-menu :which-key "Popup Claude Code menu")
-    "aw" '(claude-code-ide--set-window-side :which-key "Set Claude Code window")
-    "ap" '(claude-code-ide-send-prompt :which-key "Send prompt")
-    "as" '(claude-code-ide-switch-to-buffer :which-key "Switch to Buffer")
-    "ar" '(claude-code-ide-resume :which-key "Resume session")
-    "at" '(claude-code-ide-toggle :which-key "Toggle Claude Code")))
-
-(use-package minuet
-  :straight t
-  :defer t
-  :bind
-  (("M-y" . #'minuet-complete-with-minibuffer) ;; use minibuffer for completion
-   ("M-i" . #'minuet-show-suggestion) ;; use overlay for completion
-   ("C-c m" . #'minuet-configure-provider)
-   :map minuet-active-mode-map
-   ;; These keymaps activate only when a minuet suggestion is displayed in the current buffer
-   ("M-p" . #'minuet-previous-suggestion) ;; invoke completion or cycle to next completion
-   ("M-n" . #'minuet-next-suggestion) ;; invoke completion or cycle to previous completion
-   ("M-A" . #'minuet-accept-suggestion) ;; accept whole completion
-   ;; Accept the first line of completion, or N lines with a numeric-prefix:
-   ;; e.g. C-u 2 M-a will accepts 2 lines of completion.
-   ("M-a" . #'minuet-accept-suggestion-line)
-   ("M-e" . #'minuet-dismiss-suggestion))
-  :custom
-  (minuet-provider 'openai)
-  :hook
-  (prog-mode . minuet-auto-suggestion-mode)
-  (minuet-active-mode . evil-normalize-keymaps)
-  :config
-  (setenv "OPENAI_API_KEY" (get-openai-api-key))
-  ;; change openai model to gpt-4.1
-  (plist-put minuet-openai-options :model "gpt-4.1-mini")
-  ;; :init
-  (plist-put minuet-openai-options :api-key "OPENAI_API_KEY"))
-
+    "a"  '(:ignore t :which-key "ai")
+    ;; Top-level actions
+    "aa" '(pi-coding-agent                 :which-key "Start Session")
+    "at" '(pi-coding-agent-toggle          :which-key "Toggle Visibility")
+    "am" '(pi-coding-agent-menu            :which-key "Open Menu")
+    ;; Input actions (when in input buffer)
+    "as" '(pi-coding-agent-send            :which-key "Send Prompt")
+    "ak" '(pi-coding-agent-abort           :which-key "Abort Streaming")
+    "aS" '(pi-coding-agent-queue-steering  :which-key "Queue Steering")
+    "af" '(pi-coding-agent-queue-followup  :which-key "Queue Follow-up")
+    ;; Session management
+    "an" '(pi-coding-agent-new-session     :which-key "New Session")
+    "ar" '(pi-coding-agent-resume-session  :which-key "Resume Session")
+    "aR" '(pi-coding-agent-reload          :which-key "Reload Session")
+    "aN" '(pi-coding-agent-set-session-name :which-key "Set Session Name")
+    "ae" '(pi-coding-agent-export-html     :which-key "Export to HTML")
+    "aq" '(pi-coding-agent-quit            :which-key "Quit Session")
+    ;; Context
+    "ac" '(pi-coding-agent-compact         :which-key "Compact Context")
+    "aF" '(pi-coding-agent-fork            :which-key "Fork Session")
+    ;; Model & thinking
+    "aM" '(pi-coding-agent-select-model    :which-key "Select Model")
+    "aT" '(pi-coding-agent-cycle-thinking  :which-key "Cycle Thinking Level")
+    "ad" '(pi-coding-agent-toggle-thinking-display          :which-key "Toggle Thinking Display")
+    "aD" '(pi-coding-agent-toggle-default-thinking-display  :which-key "Toggle Default Thinking Display")
+    ;; Info
+    "ai" '(pi-coding-agent-session-stats   :which-key "Session Stats")
+    "ap" '(pi-coding-agent-process-info    :which-key "Process Info")
+    "ay" '(pi-coding-agent-copy-last-message :which-key "Copy Last Message")
+    "ag" '(pi-coding-agent-refresh-commands :which-key "Refresh Commands")
+    ;; Sub-menus
+    "ax" '(pi-coding-agent-extensions-menu :which-key "Extensions Menu")
+    "aK" '(pi-coding-agent-skills-menu     :which-key "Skills Menu")
+    "aL" '(pi-coding-agent-templates-menu  :which-key "Templates Menu")
+    "a!" '(pi-coding-agent-run-custom-command :which-key "Run Custom Command")
+    ))
 
 (provide 'init-ai)
 ;;; init-ai.el ends here.
