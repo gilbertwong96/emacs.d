@@ -116,7 +116,7 @@
  ("pcre2el" . "b4d846d80dddb313042131cf2b8fbf647567e000")
  ("pdf-tools" . "365f88238f46f9b1425685562105881800f10386")
  ("pfuture" . "19b53aebbc0f2da31de6326c495038901bffb73c")
- ("pi-coding-agent" . "9b476215ad368dcf702654aa3be68a4d191b40f6")
+ ("pi-coding-agent" . "72fb92f5d6fe8ceb02cfbad7fa16b20476971a28")
  ("po-mode" . "27538dd0938d5a941833d503afc9dba13dcf16fe")
  ("popon" . "bf8174cb7e6e8fe0fe91afe6b01b6562c4dc39da")
  ("posframe" . "74c8c56131ed866db47ae4191364b72dd4852456")

@@ -17,6 +17,7 @@
   (erlang-mode . eglot-ensure)
   (sh-mode . eglot-ensure)
   (elixir-ts-mode . eglot-ensure)
+  (heex-ts-mode . eglot-ensure)
   (python-ts-mode . eglot-ensure)
   (typescript-ts-mode . eglot-ensure)
   (js-ts-mode . eglot-ensure)
@@ -35,6 +36,11 @@
                         "tailwindcss-language-server" "--stdio"))
                     ))
     (add-to-list 'eglot-server-programs server))
+  ;; Register Expert for Elixir modes + install the :initialized interceptor
+  (add-to-list 'eglot-server-programs
+               '((elixir-ts-mode heex-ts-mode) . ("expert" "--stdio")))
+  (advice-add 'jsonrpc-notify :before #'my/expert--send-config)
+
   (setq-default eglot-workspace-configuration
                 '((:typescript
                    (:format
@@ -47,6 +53,27 @@
                                  :tabSize 2
                                  :convertTabsToSpaces t)))))
   :init
+  ;; -- Expert Elixir LSP helpers (defuns must be defined before use) -------
+  (defun my/expert--resolve (cmd)
+    (or (when-let* ((mise (executable-find "mise"))
+                    (path (ignore-errors
+                            (string-trim
+                             (shell-command-to-string
+                              (format "%s which %s" (shell-quote-argument mise) cmd)))))
+                    ((not (string-empty-p path)))
+                    ((file-executable-p path)))
+          path)
+        (executable-find cmd)))
+
+  (defun my/expert--send-config (server method _params)
+    (when (eq method :initialized)
+      (when-let* ((elixir (my/expert--resolve "elixir"))
+                  (erl    (my/expert--resolve "erl")))
+        (jsonrpc-notify server :workspace/didChangeConfiguration
+                        (list :settings
+                              (list :elixirExecutablePath elixir
+                                    :erlangExecutablePath erl))))))
+  ;; ------------------------------------------------------------------------
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (local-leader-def
     :keymaps 'eglot-mode-map
