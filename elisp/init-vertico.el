@@ -222,9 +222,7 @@
   (("C-." . embark-act)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
    ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-
-  ;; Live preview in Embark Collect buffers is wired up by embark-consult
-  ;; itself (see `consult--default-completion-list-preview-setup').)
+  )
 
 (provide 'init-vertico)
 ;;; init-vertico.el ends here
