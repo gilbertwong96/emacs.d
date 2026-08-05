@@ -131,9 +131,7 @@
   :straight t
   :after general
 
-  ;; Enable automatic preview at point in the *Completions* buffer. This is
-  ;; relevant when you use the default completion UI.
-  :hook (completion-list-mode . consult-preview-at-point-mode)
+  ;; Preview in *Completions* is enabled automatically since Consult 3.2.
 
   ;; The :init configuration is always executed (Not lazy)
   :init
@@ -226,7 +224,7 @@
    ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
 
   :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
+  (embark-collect-mode . consult-preview-at-point))
 
 (provide 'init-vertico)
 ;;; init-vertico.el ends here
