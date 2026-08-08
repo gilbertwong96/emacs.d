@@ -31,7 +31,7 @@
                         "--"
                         "typescript-language-server" "--stdio"
                         "--"
-                        "eslint-lsp" "--stdio"
+                        "oxlint" "--lsp"
                         "--"
                         "tailwindcss-language-server" "--stdio"))
                     ))
