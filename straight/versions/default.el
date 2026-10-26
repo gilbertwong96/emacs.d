@@ -87,6 +87,7 @@
  ("magit-lfs" . "cd9f46e1840270be27e2c2d9dcf036ff0781f66d")
  ("magit-todos" . "7294a95580bddf7232f2d205efae312dc24c5f61")
  ("marginalia" . "feb66c02bbd88dba867cdd92b94fe24279ed578a")
+ ("markdown-mermaid" . "203c211f6af0d8a260f9d6307a3f5d2c97f5ffa3")
  ("markdown-mode" . "1f72cefa6a4b759f90e335e4908725a721b17ad9")
  ("markdown-table-wrap" . "afc8214c6a2109891c5adf5ee7f75b8d8a2c4a35")
  ("marquee-header" . "c0e884eea86ef818a652dba9a1719b50489813a6")
