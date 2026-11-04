@@ -14,8 +14,7 @@
   ("elvis\\.config" . erlang-mode)
   :hook
   (erlang-mode . (lambda () (setq truncate-lines t)))
-  (eglot-managed-mode . flymake-mode)
-  :ensure-system-package erlang)
+  (eglot-managed-mode . flymake-mode))
 
 (provide 'init-erlang)
 ;;; init-erlang.el ends here
