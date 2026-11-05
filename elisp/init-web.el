@@ -70,7 +70,6 @@
   (heex-ts-mode . emmet-mode))
 
 (use-package vue-ts-mode
-  :after typescript-ts-mode
   :mode
   ("\\.vue\\'" . vue-ts-mode)
   :straight (:host github :repo "8uff3r/vue-ts-mode"))
