@@ -29,7 +29,7 @@
   :straight t
   :defer t
   :custom
-  (git-gutter:update-interval 1 "set update interval 1 seconds")
+  (git-gutter:update-interval 0)
   (git-gutter:modified-sign "│")
   (git-gutter:added-sign "│")
   (git-gutter:deleted-sign "│")
