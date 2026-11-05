@@ -60,6 +60,7 @@
 (use-package init-erlang)
 (use-package init-haskell)
 (use-package init-go)
+(use-package init-java)
 (use-package init-markdown)
 (use-package init-python)
 (use-package init-rust)

@@ -2,18 +2,14 @@
 
 ;;; Commentary:
 
-;; Gilbert's Emacs Configuration
+;; Enhance Java developing
 
 ;;; Code:
 
-(use-package java-mode
-  :straight t
-  :defer t
+(use-package cc-mode
+  :straight (:type built-in)
   :hook
-  (java-mode . eglot-ensure)
-  :ensure-system-package java)
-
-(add-hook 'java-mode #'eglot-ensure)
+  (java-mode . eglot-ensure))
 
 (provide 'init-java)
 ;;; init-java.el ends here
