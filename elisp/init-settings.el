@@ -159,6 +159,17 @@ screen."
   (setq auto-save-file-name-transforms
         `((".*" ,(expand-file-name "\\1" "/tmp/") t)))
 
+  ;; Keep undo history usable across long editing sessions
+  (setq undo-limit (* 16 1024 1024)
+        undo-strong-limit (* 24 1024 1024)
+        undo-outer-limit (* 64 1024 1024))
+
+  ;; No .# lockfile clutter
+  (setq create-lockfiles nil)
+
+  ;; Bigger reads for subprocesses (LSP servers, ripgrep, git)
+  (setq read-process-output-max (* 1024 1024))
+
   ;; Enable column mode
   (column-number-mode t)
 
