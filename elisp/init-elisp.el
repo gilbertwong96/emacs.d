@@ -11,7 +11,9 @@
   :hook
   (emacs-lisp-mode . paredit-mode))
 
-(use-package package-lint :straight t)
+(use-package package-lint
+  :straight t
+  :defer t)
 
 
 (use-package elisp-slime-nav
@@ -55,9 +57,13 @@
     :keymaps 'eask-mode-map
     "K" 'eldoc))
 
-(use-package easky :straight (easky :type git :host github :repo "emacs-eask/easky"))
+(use-package easky
+  :straight (easky :type git :host github :repo "emacs-eask/easky")
+  :defer t)
 
-(use-package eask-mode :straight t)
+(use-package eask-mode
+  :straight t
+  :defer t)
 
 (customize-set-variable 'emacs-lisp-docstring-fill-column 100)
 
