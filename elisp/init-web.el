@@ -72,9 +72,13 @@
   ("\\.vue\\'" . vue-ts-mode)
   :straight (:host github :repo "8uff3r/vue-ts-mode"))
 
-(use-package request :straight t)
+(use-package request
+  :straight t
+  :defer t)
 
-(use-package graphql-mode :straight t)
+(use-package graphql-mode
+  :straight t
+  :defer t)
 
 (provide 'init-web)
 ;;; init-web.el ends here
