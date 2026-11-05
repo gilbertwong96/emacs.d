@@ -56,6 +56,12 @@
   :mode
   ("\\.pot?\\'" . po-mode))
 
+(use-package web-mode
+  :straight t
+  :mode
+  ("\\.html?\\'" . web-mode)
+  ("\\.hbs\\'" . web-mode))
+
 (use-package emmet-mode
   :straight t
   :defer t
