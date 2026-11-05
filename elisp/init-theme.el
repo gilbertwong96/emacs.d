@@ -6,10 +6,6 @@
 
 ;;; Code:
 
-(use-package all-the-icons
-  :straight t
-  :defer t)
-
 (use-package doom-themes
   :straight t
   :init
