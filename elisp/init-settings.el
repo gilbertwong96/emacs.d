@@ -153,7 +153,7 @@ screen."
 
 
   ;; Enable file auto save
-  (setq auto-save-visited-mode t)
+  (auto-save-visited-mode 1)
 
   ;; Store auto-save files in /tmp/
   (setq auto-save-file-name-transforms
