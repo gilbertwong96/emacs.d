@@ -13,8 +13,7 @@
   ("rebar\\.\\(config\\|lock\\)" . erlang-mode)
   ("elvis\\.config" . erlang-mode)
   :hook
-  (erlang-mode . (lambda () (setq truncate-lines t)))
-  (eglot-managed-mode . flymake-mode))
+  (erlang-mode . (lambda () (setq truncate-lines t))))
 
 (provide 'init-erlang)
 ;;; init-erlang.el ends here
