@@ -16,8 +16,7 @@
 
 (use-package yaml-pro
   :straight t
-  :hook (yaml-pro-mode . yaml-ts-mode)
-  :mode ("\\.ya?ml\\'" . yaml-pro-mode))
+  :hook (yaml-ts-mode . yaml-pro-ts-mode))
 
 ;; Major mode for Hashicorp Configuration Language.
 (use-package hcl-mode
