@@ -224,7 +224,9 @@ screen."
 
   (global-ligature-mode 't))
 
-(use-package iedit :straight t)
+(use-package iedit
+  :straight t
+  :defer t)
 
 (use-package recentf)
 
