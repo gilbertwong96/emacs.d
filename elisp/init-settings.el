@@ -190,8 +190,7 @@ screen."
 (use-package doom-modeline
   :straight t
   :config
-  (doom-modeline-mode 1)
-  (setq inhibit-compacting-font-caches t))
+  (doom-modeline-mode 1))
 
 (use-package ligature
   :straight t
