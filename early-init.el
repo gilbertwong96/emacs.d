@@ -35,6 +35,11 @@
 (add-to-list 'default-frame-alist '(width  . 160))
 (add-to-list 'default-frame-alist '(height . 50))
 
+;; straight defaults to `find-at-startup', which runs find(1) over every recipe
+;; repository before packages are made available.  Here that costs ~2s per
+;; startup, and it has to be disabled before straight is bootstrapped.
+(setq straight-check-for-modifications '(find-when-checking))
+
 ;; Use straight.el as package manager
 (defvar bootstrap-version)
 (let ((bootstrap-file

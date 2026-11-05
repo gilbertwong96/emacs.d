@@ -15,8 +15,7 @@
 (use-package straight
   :custom
   (straight-disable-native-compile nil)
-  (straight-use-package-by-default nil)
-  (straight-check-for-modifications '(watch-files find-when-checking)))
+  (straight-use-package-by-default nil))
 
 (use-package exec-path-from-shell
   :straight t
