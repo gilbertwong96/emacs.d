@@ -9,8 +9,8 @@
 (use-package eglot
   :straight t
   :custom
-  ;; (eglot-send-changes-idle-time 0.5 "Send changes after 1 second idle time")
   (eglot-sync-connect nil)
+  (eglot-autoshutdown t)
   :defer t
   :hook
   (c-mode . eglot-ensure)
