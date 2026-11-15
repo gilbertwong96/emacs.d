@@ -193,7 +193,7 @@ screen."
 
   (gilbert/clean-temp-files)
 
-  (gilbert/fullscreen)
+  ;; (gilbert/fullscreen)
   )
 
 (gilbert/better-defaults)
