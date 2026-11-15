@@ -17,13 +17,14 @@
   :custom-face
   (fixed-pitch ((t (:family "JetBrainsMono Nerd Font"))))
   :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown")
   :ensure-system-package marksman
   :config
   (local-leader-def
     :keymaps 'markdown-mode-map
     "m"  '(:ignore t :which-key "mermaid")
-    "mp" '(markdown-mermaid-preview :which-key "Preview diagram at point"))
+    "mp" '(markdown-mermaid-preview :which-key "Preview diagram at point")
+    "p"  '(org-markdown-preview-mode :which-key "Live preview")
+    "P"  '(org-markdown-preview-browse-preview :which-key "Reopen preview"))
   )
 
 (use-package markdown-mermaid
@@ -65,6 +66,28 @@ the contents of <foreignObject>."
         (dolist (file (list input output config))
           (when (file-exists-p file) (delete-file file)))
         nil))))
+
+(defvar my/markdown-preview-token nil
+  "Cached GitHub token for `org-markdown-preview'.")
+
+(defun my/markdown-preview-gh-auth ()
+  "Return the GitHub user and token for the Markdown API renderer."
+  (cons "gilbertwong96"
+        (or my/markdown-preview-token
+            (setq my/markdown-preview-token
+                  (string-trim (shell-command-to-string "gh auth token"))))))
+
+(use-package ghub
+  :straight t
+  :defer t)
+
+(use-package org-markdown-preview
+  :straight (:host github :repo "KarimAziev/org-markdown-preview"
+             :files ("*.el" "*.html"))
+  :commands (org-markdown-preview-mode org-markdown-preview-browse-preview)
+  :custom
+  (org-markdown-preview-gh-auth #'my/markdown-preview-gh-auth)
+  :ensure-system-package pandoc)
 
 (provide 'init-markdown)
 ;;; init-markdown.el ends here
